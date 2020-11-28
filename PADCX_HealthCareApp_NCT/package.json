@@ -1,0 +1,14 @@
+{
+  "name": "healthcareapp-padcx",
+  "version": "1.0.0",
+  "description": "Health care app test import",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nct",
+  "license": "ISC",
+  "dependencies": {
+    "firestore-export-import": "^0.8.0"
+  }
+}

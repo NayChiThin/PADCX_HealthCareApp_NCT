@@ -1,0 +1,184 @@
+{
+"doctors":{
+	"Athony":{
+	"name":"Athony",
+	"speciality":"Dentist",
+	"certificate":"Deplomate in Dental Public Health-American Association of Public Health Dentistry",
+	"profilephoto":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.healthmedocs.com%2Fassets%2Fimg%2Fdoctor_profile_image.png&imgrefurl=https%3A%2F%2Fwww.healthmedocs.com%2F&tbnid=e_8xnUjWNa02GM&vet=12ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygbegUIARDnAQ..i&docid=_KiKrEwZowCYHM&w=779&h=813&q=profile%20doctor&ved=2ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygbegUIARDnAQ",
+	"description":"Patient is first priority.",
+	"phonenumber":"093472382"
+	},
+	"Gorge":{
+	"name":"Gorge",
+	"speciality":"General Physician",
+	"certificate":"Certification from ABFM",
+	"profilephoto":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fclinicalnotebook.com%2Fwp-content%2Fuploads%2F2015%2F04%2FDoctor-Profile-Pic-Example.png&imgrefurl=https%3A%2F%2Fclinicalnotebook.com%2Fdoctor-profile-pic-example%2F&tbnid=wXCML24ppHmGDM&vet=12ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygTegUIARDRAQ..i&docid=_mAP0escJRc-uM&w=320&h=379&q=profile%20doctor&ved=2ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygTegUIARDRAQ",
+	"description":"",
+	"phonenumber":"01239843"
+	}
+	},
+"questions":{
+	"one-time":{
+		"dob":{
+		"sentence":"What is your birthday?",
+		"type":"General"
+		},
+		"medicine":{
+		"sentence":"What are the medicines that you are not particularly suitable with you?",
+		"type":"General"
+		},
+		"height":{
+		"sentence":"What is your height?",
+		"type":"General"
+		},
+		"bloodtype":{
+		"sentence":"What is your bloodtype?",
+		"type":"General"
+		}
+	},
+	"always":{
+		"bloodpressure":{
+		"sentence":"What is your blood pressure?",
+		"type":"General"
+		},
+		"weight":{
+		"sentence":"What is your weight?",
+		"type":"General"
+		}
+	}
+	},
+"consultation":{
+	"1":{
+	"patient":"Bob",
+	"doctor":"Gorge",
+	"case summary":{
+		"questions":{
+			"dob":{
+			"question name":"dob",
+			"answer":"1/12/2000"
+			},
+			"medicine":{
+			"question name":"medicine",
+			"answer":"Para"
+			}
+		},
+		"description":"My teeth has been aching a lot recently."
+		},
+	"prescription":
+		{
+		"Vitamin":{
+			"medicine":"Vitamin",
+			"count":10,
+			"routine":{
+				"day":"Sunday,Wednesday",
+				"time":"11:00,22:00",
+				"times per day":2
+				}
+			},
+		"Paracetamol":{
+			"medicine":"Paracetamol",
+			"count":3,
+			"routine":{
+				"day":"Monday,Thursday,Sunday",
+				"time":"7:00",
+				"times per day":1
+				}
+			}
+		}
+	},
+	"messages":[
+		{
+		"content":"Hello",
+		"time":"12:00",
+		"sender":"doctor"
+		},
+		{
+		"content":"Hi doc",
+		"time":"12:01",
+		"sender":"patient"
+		}
+		]
+	
+	},
+"patient":{
+	"Bob":{
+	"name":"Bob",
+	"address":"No.3, Sunflower Street, NYC",
+	"profilephoto":""
+	}
+	},
+"consult request":[
+	{
+	"patient name":"Bob",
+	"case summary":{
+		"questions":{
+			"dob":{
+			"question name":"dob",
+			"answer":"1/12/2000"
+			},
+			"medicine":{
+			"question name":"medicine",
+			"answer":"Para"
+			}
+		},
+		"description":"My teeth has been aching a lot recently."
+		},
+	"speciality":"Dentist"
+	}
+	],
+"checkout":[
+	{
+	"patient name":"Bob",
+	"prescription":{
+		"Vitamin":{
+			"medicine":"Vitamin",
+			"count":10,
+			"routine":""
+		},
+		"Paracetamol":{
+			"medicine":"Paracetamol",
+			"count":3,
+			"routine":""
+		}
+		},
+	"deliver time":"11:00 11/11/2020",
+	"total cost":150,
+	"deliver address":"No.3, Sunflower Street, NYC"
+	}
+	],
+"speciality":{
+	"Dentist":{
+		"questions":{
+		"teeth ache days":{
+			"sentence":"How long has ur teeth been aching?",
+			"type":"Speciality"
+			},
+		"when teeth ache":{
+			"sentence":"In what situation does it ache mostly?",
+			"type":"Speciality"
+			},
+		"medicine taken for teeth":{
+			"sentence":"Have you taken any medicine and if so, how are the effects?",
+			"type":"Speciality"
+			}
+		},
+		"medicine":{
+		"Naproxen":{
+			"name":"Naproxen",
+			"cost":20
+			},
+		"Acetaminophen":{
+			"name":"Acetaminophen",
+			"cost":24
+			},
+		"Ibuprofen":{
+			"name":"Ibuprofen",
+			"cost":28
+			}
+		}
+		},
+	"General Physician":{
+		
+		}
+	}
+}

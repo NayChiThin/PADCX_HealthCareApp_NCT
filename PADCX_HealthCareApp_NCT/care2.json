@@ -1,0 +1,19 @@
+{
+	"consult request": [{
+		"patient name": "Bob",
+		"case summary": {
+			"questions": {
+				"dob": {
+					"question name": "dob",
+					"answer": "1/12/2000"
+				},
+				"medicine": {
+					"question name": "medicine",
+					"answer": "Para"
+				}
+			},
+			"description": "My teeth has been aching a lot recently."
+		},
+		"speciality": "Dentist"
+	}]
+}
