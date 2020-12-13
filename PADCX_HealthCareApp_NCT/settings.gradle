@@ -1,2 +1,4 @@
-include ':app'
+include ':doctor'
+include ':shared'
+include ':patient'
 rootProject.name = "PADCX_HealthCareApp_NCT"

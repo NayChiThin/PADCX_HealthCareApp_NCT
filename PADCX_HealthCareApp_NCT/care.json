@@ -1,184 +1,365 @@
-{
-"doctors":{
-	"Athony":{
-	"name":"Athony",
-	"speciality":"Dentist",
-	"certificate":"Deplomate in Dental Public Health-American Association of Public Health Dentistry",
-	"profilephoto":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.healthmedocs.com%2Fassets%2Fimg%2Fdoctor_profile_image.png&imgrefurl=https%3A%2F%2Fwww.healthmedocs.com%2F&tbnid=e_8xnUjWNa02GM&vet=12ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygbegUIARDnAQ..i&docid=_KiKrEwZowCYHM&w=779&h=813&q=profile%20doctor&ved=2ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygbegUIARDnAQ",
-	"description":"Patient is first priority.",
-	"phonenumber":"093472382"
-	},
-	"Gorge":{
-	"name":"Gorge",
-	"speciality":"General Physician",
-	"certificate":"Certification from ABFM",
-	"profilephoto":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fclinicalnotebook.com%2Fwp-content%2Fuploads%2F2015%2F04%2FDoctor-Profile-Pic-Example.png&imgrefurl=https%3A%2F%2Fclinicalnotebook.com%2Fdoctor-profile-pic-example%2F&tbnid=wXCML24ppHmGDM&vet=12ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygTegUIARDRAQ..i&docid=_mAP0escJRc-uM&w=320&h=379&q=profile%20doctor&ved=2ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygTegUIARDRAQ",
-	"description":"",
-	"phonenumber":"01239843"
-	}
-	},
-"questions":{
-	"one-time":{
-		"dob":{
-		"sentence":"What is your birthday?",
-		"type":"General"
-		},
-		"medicine":{
-		"sentence":"What are the medicines that you are not particularly suitable with you?",
-		"type":"General"
-		},
-		"height":{
-		"sentence":"What is your height?",
-		"type":"General"
-		},
-		"bloodtype":{
-		"sentence":"What is your bloodtype?",
-		"type":"General"
-		}
-	},
-	"always":{
-		"bloodpressure":{
-		"sentence":"What is your blood pressure?",
-		"type":"General"
-		},
-		"weight":{
-		"sentence":"What is your weight?",
-		"type":"General"
-		}
-	}
-	},
-"consultation":{
-	"1":{
-	"patient":"Bob",
-	"doctor":"Gorge",
-	"case summary":{
-		"questions":{
-			"dob":{
-			"question name":"dob",
-			"answer":"1/12/2000"
-			},
-			"medicine":{
-			"question name":"medicine",
-			"answer":"Para"
-			}
-		},
-		"description":"My teeth has been aching a lot recently."
-		},
-	"prescription":
 		{
-		"Vitamin":{
-			"medicine":"Vitamin",
-			"count":10,
-			"routine":{
-				"day":"Sunday,Wednesday",
-				"time":"11:00,22:00",
-				"times per day":2
+			"doctors":{
+				"Athony":{
+					"name":"Athony",
+					"speciality":"Dentist",
+					"certificate":"Deplomate in Dental Public Health-American Association of Public Health Dentistry",
+					"profilephoto":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.healthmedocs.com%2Fassets%2Fimg%2Fdoctor_profile_image.png&imgrefurl=https%3A%2F%2Fwww.healthmedocs.com%2F&tbnid=e_8xnUjWNa02GM&vet=12ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygbegUIARDnAQ..i&docid=_KiKrEwZowCYHM&w=779&h=813&q=profile%20doctor&ved=2ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygbegUIARDnAQ",
+					"description":"Patient is first priority.",
+					"phonenumber":"093472382"
+				},
+				"Gorge":{
+					"name":"Gorge",
+					"speciality":"General Physician",
+					"certificate":"Certification from ABFM",
+					"profilephoto":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fclinicalnotebook.com%2Fwp-content%2Fuploads%2F2015%2F04%2FDoctor-Profile-Pic-Example.png&imgrefurl=https%3A%2F%2Fclinicalnotebook.com%2Fdoctor-profile-pic-example%2F&tbnid=wXCML24ppHmGDM&vet=12ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygTegUIARDRAQ..i&docid=_mAP0escJRc-uM&w=320&h=379&q=profile%20doctor&ved=2ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygTegUIARDRAQ",
+					"description":"",
+					"phonenumber":"01239843"
 				}
 			},
-		"Paracetamol":{
-			"medicine":"Paracetamol",
-			"count":3,
-			"routine":{
-				"day":"Monday,Thursday,Sunday",
-				"time":"7:00",
-				"times per day":1
+			"questions":{
+				"dob":{
+					"sentence":"What is your birthday?",
+					"type":"General",
+					"ask_time":"Once",
+					"answer":"",
+					"name":"dob"
+				},
+				"medicine":{
+					"sentence":"What are the medicines that you are not particularly suitable with you?",
+					"type":"General",
+					"ask_time":"Once",
+					"answer":"",
+					"name":"medicine"
+				},
+				"height":{
+					"sentence":"What is your height?",
+					"type":"General",
+					"ask_time":"Once",
+					"answer":"",
+					"name":"height"
+				},
+				"bloodtype":{
+					"sentence":"What is your bloodtype?",
+					"type":"General",
+					"ask_time":"Once",
+					"answer":"",
+					"name":"bloodtype"
+				}
+				,
+				"bloodpressure":{
+					"sentence":"What is your blood pressure?",
+					"type":"General",
+					"ask_time":"Always",
+					"answer":"",
+					"name":"bloodpressure"
+				},
+				"weight":{
+					"sentence":"What is your weight?",
+					"type":"General",
+					"ask_time":"Always",
+					"answer":"",
+					"name":"weight"
+				}
+
+			},
+			"consultation":{
+				"1":{
+					"subCollection":{
+						"consultation/1/consultees":{
+							"patient":{
+								"name":"Bob",
+								"address":"No.3, Sunflower Street, NYC",
+								"profilephoto":"",
+								"subCollection":{
+									"consultation/1/consultees/patient/general_questions":{
+										"dob":{
+											"sentence":"What is your birthday?",
+											"type":"General",
+											"ask_time":"Once",
+											"answer":"12/12/2000",
+											"name":"dob"
+										},
+										"medicine":{
+											"sentence":"What are the medicines that you are not particularly suitable with you?",
+											"type":"General",
+											"ask_time":"Once",
+											"answer":"Para",
+											"name":"medicine"
+										},
+										"height":{
+											"sentence":"What is your height?",
+											"type":"General",
+											"ask_time":"Once",
+											"answer":"5.5 feet",
+											"name":"height"
+										},
+										"bloodtype":{
+											"sentence":"What is your bloodtype?",
+											"type":"General",
+											"ask_time":"Once",
+											"answer":"A",
+											"name":"bloodtype"
+										}
+									}
+								}
+							},
+							"doctor":{
+								"name":"Gorge",
+								"speciality":"General Physician",
+								"certificate":"Certification from ABFM",
+								"profilephoto":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fclinicalnotebook.com%2Fwp-content%2Fuploads%2F2015%2F04%2FDoctor-Profile-Pic-Example.png&imgrefurl=https%3A%2F%2Fclinicalnotebook.com%2Fdoctor-profile-pic-example%2F&tbnid=wXCML24ppHmGDM&vet=12ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygTegUIARDRAQ..i&docid=_mAP0escJRc-uM&w=320&h=379&q=profile%20doctor&ved=2ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygTegUIARDRAQ",
+								"description":"",
+								"phonenumber":"01239843"
+
+							}
+						}
+					},
+					"subCollection":{
+						"consultation/1/case_summary":{
+							"questions":{
+								"dob":{
+									"name":"dob",
+									"answer":"1/12/2000",
+									"ask_time":"Once",
+									"sentence":"What is your birthday?",
+									"type":"General"
+								},
+								"medicine":{
+									"name":"medicine",
+									"answer":"Para",
+									"ask_time":"Once",
+									"sentence":"What are the medicines that you are not particularly suitable with you?",
+									"type":"General"
+								}
+							}
+						}
+					},
+					"subCollection":{
+						"consultation/1/prescription":
+						{
+							"Vitamin":{
+								"medicine":{
+									"cost":20,
+									"name":"Vitamin"
+								},
+								"count":10,
+								"routine":{
+									"day":"Sunday,Wednesday",
+									"time":"11:00,22:00",
+									"times_per_day":2,
+									"total_days":2
+								}
+							},
+							"Paracetamol":{
+								"medicine":{
+									"cost":24,
+									"name":"Paracetamol"
+								},
+								"count":3,
+								"routine":{
+									"day":"Monday,Thursday,Sunday",
+									"time":"7:00",
+									"times_per_day":1,
+									"total_days":3
+								}
+							}
+						}
+					},
+				},
+				"subCollection":{
+					"consultation/1/messages":[
+						{
+							"text":"Hello",
+							"image":"",
+							"date":"12/2/2020",
+							"time":"12:00",
+							"sender":"Gorge"
+						},
+						{
+							"text":"Hi doc",
+							"image":"",
+							"date":"12/2/2020",
+							"time":"12:01",
+							"sender":"Bob"
+						}
+					]
+				}
+
+			},
+			"patient":{
+				"Bob":{
+					"name":"Bob",
+					"address":"No.3, Sunflower Street, NYC",
+					"profilephoto":"",
+					"subCollection":{
+						"patient/Bob/general_questions":{
+							"dob":{
+								"sentence":"What is your birthday?",
+								"type":"General",
+								"ask_time":"Once",
+								"answer":"12/12/2000",
+								"name":"dob"
+							},
+							"medicine":{
+								"sentence":"What are the medicines that you are not particularly suitable with you?",
+								"type":"General",
+								"ask_time":"Once",
+								"answer":"Para",
+								"name":"medicine"
+							},
+							"height":{
+								"sentence":"What is your height?",
+								"type":"General",
+								"ask_time":"Once",
+								"answer":"5.5 feet",
+								"name":"height"
+							},
+							"bloodtype":{
+								"sentence":"What is your bloodtype?",
+								"type":"General",
+								"ask_time":"Once",
+								"answer":"A",
+								"name":"bloodtype"
+							}
+						}
+					},
+					"subCollection":{
+						"patient/Bob/recent_doctors":{
+							"Gorge":{
+								"name":"Gorge",
+								"speciality":"General Physician",
+								"certificate":"Certification from ABFM",
+								"profilephoto":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fclinicalnotebook.com%2Fwp-content%2Fuploads%2F2015%2F04%2FDoctor-Profile-Pic-Example.png&imgrefurl=https%3A%2F%2Fclinicalnotebook.com%2Fdoctor-profile-pic-example%2F&tbnid=wXCML24ppHmGDM&vet=12ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygTegUIARDRAQ..i&docid=_mAP0escJRc-uM&w=320&h=379&q=profile%20doctor&ved=2ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygTegUIARDRAQ",
+								"description":"",
+								"phonenumber":"01239843"
+							}
+						}
+					}
+				}
+			},
+			"consult_request":[
+				{
+					"patient_name":"Bob",
+					"subCollection":{
+						"case_summary":{
+							"dob":{
+								"sentence":"What is your birthday?",
+								"type":"General",
+								"ask_time":"Once",
+								"answer":"1/12/2000",
+								"name":"dob"
+							},
+							"medicine":{
+								"sentence":"What are the medicines that you are not particularly suitable with you?",
+								"type":"General",
+								"ask_time":"Once",
+								"answer":"Para",
+								"name":"medicine"
+							},
+							"bloodpressure":{
+								"sentence":"What is your blood pressure?",
+								"type":"General",
+								"ask_time":"Always",
+								"answer":"",
+								"name":"bloodpressure"
+							}
+						}
+					}
+					,
+					"speciality":"Dentist"
+				}
+			],
+			"checkout":[
+				{
+					"patient_name":"Bob",
+					"patient_address":"No.3, Sunflower Street, NYC",
+					"subCollection":{
+						"prescription":{
+							"Vitamin":{
+								"medicine":{
+									"name":"Vitamin",
+									"cost":20
+								},
+								"count":10,
+								"routine":{
+									"day":"Sunday,Wednesday",
+									"time":"11:00,22:00",
+									"times_per_day":2,
+									"total_days":2
+								}
+							},
+							"Paracetamol":{
+								"medicine":{
+									"name":"Paracetamol",
+									"cost":24
+								},
+								"count":3,
+								"routine":{
+									"day":"Monday,Thursday,Sunday",
+									"time":"7:00",
+									"times_per_day":1,
+									"total_days":3
+								}
+							}
+						}
+					},
+					"deliver_routine":{
+						"date":"12/2/2020",
+						"time":"12:00"
+					},
+					"total_cost":150,
+					"deliver_address":"No.3, Sunflower Street, NYC"
+				}
+			],
+			"speciality":{
+				"Dentist":{
+					"name":"Dentist",
+					"subCollection":{
+						"speciality/Dentist/questions":{
+							"teeth_ache_days":{
+								"sentence":"How long has ur teeth been aching?",
+								"type":"Speciality",
+								"ask_time":"Always",
+								"answer":"",
+								"name":"teeth_ache_days"
+							},
+							"when_teeth_ache":{
+								"sentence":"In what situation does it ache mostly?",
+								"type":"Speciality",
+								"ask_time":"Always",
+								"answer":"",
+								"name":"when_teeth_ache"
+							},
+							"medicine_taken_for_teeth":{
+								"sentence":"Have you taken any medicine and if so, how are the effects?",
+								"type":"Speciality",
+								"ask_time":"Always",
+								"answer":"",
+								"name":"medicine_taken_for_teeth"
+							}
+						}
+					},
+					"subCollection":{
+						"speciality/Dentist/medicine":{
+							"Naproxen":{
+								"name":"Naproxen",
+								"cost":20
+							},
+							"Acetaminophen":{
+								"name":"Acetaminophen",
+								"cost":24
+							},
+							"Ibuprofen":{
+								"name":"Ibuprofen",
+								"cost":28
+							}
+
+						}
+					}
+				},
+				"General Physician":{
+
 				}
 			}
 		}
-	},
-	"messages":[
-		{
-		"content":"Hello",
-		"time":"12:00",
-		"sender":"doctor"
-		},
-		{
-		"content":"Hi doc",
-		"time":"12:01",
-		"sender":"patient"
-		}
-		]
-	
-	},
-"patient":{
-	"Bob":{
-	"name":"Bob",
-	"address":"No.3, Sunflower Street, NYC",
-	"profilephoto":""
-	}
-	},
-"consult request":[
-	{
-	"patient name":"Bob",
-	"case summary":{
-		"questions":{
-			"dob":{
-			"question name":"dob",
-			"answer":"1/12/2000"
-			},
-			"medicine":{
-			"question name":"medicine",
-			"answer":"Para"
-			}
-		},
-		"description":"My teeth has been aching a lot recently."
-		},
-	"speciality":"Dentist"
-	}
-	],
-"checkout":[
-	{
-	"patient name":"Bob",
-	"prescription":{
-		"Vitamin":{
-			"medicine":"Vitamin",
-			"count":10,
-			"routine":""
-		},
-		"Paracetamol":{
-			"medicine":"Paracetamol",
-			"count":3,
-			"routine":""
-		}
-		},
-	"deliver time":"11:00 11/11/2020",
-	"total cost":150,
-	"deliver address":"No.3, Sunflower Street, NYC"
-	}
-	],
-"speciality":{
-	"Dentist":{
-		"questions":{
-		"teeth ache days":{
-			"sentence":"How long has ur teeth been aching?",
-			"type":"Speciality"
-			},
-		"when teeth ache":{
-			"sentence":"In what situation does it ache mostly?",
-			"type":"Speciality"
-			},
-		"medicine taken for teeth":{
-			"sentence":"Have you taken any medicine and if so, how are the effects?",
-			"type":"Speciality"
-			}
-		},
-		"medicine":{
-		"Naproxen":{
-			"name":"Naproxen",
-			"cost":20
-			},
-		"Acetaminophen":{
-			"name":"Acetaminophen",
-			"cost":24
-			},
-		"Ibuprofen":{
-			"name":"Ibuprofen",
-			"cost":28
-			}
-		}
-		},
-	"General Physician":{
-		
-		}
-	}
-}

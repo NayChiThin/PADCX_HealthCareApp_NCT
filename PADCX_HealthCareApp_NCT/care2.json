@@ -1,19 +1,58 @@
 {
-	"consult request": [{
-		"patient name": "Bob",
-		"case summary": {
-			"questions": {
-				"dob": {
-					"question name": "dob",
-					"answer": "1/12/2000"
-				},
-				"medicine": {
-					"question name": "medicine",
-					"answer": "Para"
+	"consultation":{
+				"1":{
+					"subCollection":{
+						"consultation/1/consultees":{
+							"patient":{
+								"name":"Bob",
+								"address":"No.3, Sunflower Street, NYC",
+								"profilephoto":"",
+								"subCollection":{
+									"consultation/1/consultees/patient/general_questions":{
+										"dob":{
+											"sentence":"What is your birthday?",
+											"type":"General",
+											"ask_time":"Once",
+											"answer":"12/12/2000",
+											"name":"dob"
+										},
+										"medicine":{
+											"sentence":"What are the medicines that you are not particularly suitable with you?",
+											"type":"General",
+											"ask_time":"Once",
+											"answer":"Para",
+											"name":"medicine"
+										},
+										"height":{
+											"sentence":"What is your height?",
+											"type":"General",
+											"ask_time":"Once",
+											"answer":"5.5 feet",
+											"name":"height"
+										},
+										"bloodtype":{
+											"sentence":"What is your bloodtype?",
+											"type":"General",
+											"ask_time":"Once",
+											"answer":"A",
+											"name":"bloodtype"
+										}
+									}
+								}
+							},
+							"doctor":{
+								"name":"Gorge",
+								"speciality":"General Physician",
+								"certificate":"Certification from ABFM",
+								"profilephoto":"https://www.google.com/imgres?imgurl=https%3A%2F%2Fclinicalnotebook.com%2Fwp-content%2Fuploads%2F2015%2F04%2FDoctor-Profile-Pic-Example.png&imgrefurl=https%3A%2F%2Fclinicalnotebook.com%2Fdoctor-profile-pic-example%2F&tbnid=wXCML24ppHmGDM&vet=12ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygTegUIARDRAQ..i&docid=_mAP0escJRc-uM&w=320&h=379&q=profile%20doctor&ved=2ahUKEwi78cfMiaTtAhXS8jgGHV3vDVcQMygTegUIARDRAQ",
+								"description":"",
+								"phonenumber":"01239843"
+
+							}
+						}
+					}
 				}
-			},
-			"description": "My teeth has been aching a lot recently."
-		},
-		"speciality": "Dentist"
-	}]
+
+			}
+
 }
