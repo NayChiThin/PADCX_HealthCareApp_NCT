@@ -32,6 +32,10 @@ fun MutableMap<String,Any>.toDoctorVO():DoctorVO {
     doctor.phonenumber = this["phonenumber"] as String
     doctor.profilephoto = this["profilephoto"] as String
     doctor.speciality = this["speciality"] as String
+    doctor.address = this["address"] as String
+    doctor.gender = this["gender"] as String
+    doctor.dob = this["dob"] as String
+    doctor.experience = this["experience"] as String
     return doctor
 }
 fun MutableMap<String,Any>.toMedicineVO() : MedicineVO {

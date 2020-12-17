@@ -12,27 +12,16 @@ import com.padcx.shared.mvp.presenters.AbstractBasePresenter
 
 class RegisterPresenterImpl : RegisterPresenter, AbstractBasePresenter<RegisterView>() {
 
-    private val mRegisterModel : RegisterModel = RegisterModelImpl
     private val mAuthenticationModel : AuthenticationModel = AuthenticationModelImpl
-
-    override fun onTapRegister(
-        doctor: DoctorVO,
-        email:String,
-        password:String
-    ) {
-        mAuthenticationModel.register(email,password,doctor.name?:"",
-        onSuccess = {
-            Log.d("Firebase","Success Register Authentication")
-            mRegisterModel.registerNewDoctor(doctor,
-                onSuccess = {
-                    Log.d("Firebase","Success Register Doctor")
-                },
-                onFailure = {
-                    mView.showError(it)
-                })
-        },
-        onFailure = {
-            mView.showError(it)
-        })
+    override fun onTapNext(phone: String) {
+        mAuthenticationModel.setUserPhoneNumber(phone)
+        mView.navigateToRegisterPassword()
     }
+
+    override fun onUiReady() {
+        mView.displayUserName(mAuthenticationModel.getUserName())
+        mView.displayUserPhoto(mAuthenticationModel.getUserPhoto())
+        mView.displayPhoneNumber(mAuthenticationModel.getUserPhoneNumber())
+    }
+
 }

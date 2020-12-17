@@ -11,11 +11,11 @@ import com.padcx.shared.persistence.typeconverters.QuestionVOListTypeConverter
 @TypeConverters(QuestionVOListTypeConverter::class,MedicineVOListTypeConverter::class)
 data class SpecialityVO(
     @PrimaryKey
-    @SerializedName("name") var name:String? = null,
+    @SerializedName("name") var name:String = "",
     @SerializedName("medicine") var medicine:List<MedicineVO>? = null,
     @SerializedName("questions")var questions:List<QuestionVO>? = null
 )
-fun SpecialityVO.toSpecialityMap():HashMap<String,String?> {
+fun SpecialityVO.toSpecialityMap():HashMap<String,String> {
     val specialityMap = hashMapOf(
         "name" to name
     )

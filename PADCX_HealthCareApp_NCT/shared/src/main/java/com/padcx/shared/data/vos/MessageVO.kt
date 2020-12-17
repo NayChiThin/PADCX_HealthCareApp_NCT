@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "messages")
 data class MessageVO(
     @PrimaryKey
-    var id:String? = null,
+    var id:String = "",
     var text:String? = null,
     var image:String? = null,
     var sender:String? = null,

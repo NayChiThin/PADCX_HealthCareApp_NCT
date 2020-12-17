@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">PADCX_HealthCareApp_NCT</string>
+    <string name="the_caremm">The CareMM</string>
+    <string name="patient_app">PATIENT APP</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="sign_in_fb">Sign in with Facebook</string>
+    <string name="sign_in_with_apple">Sign in with Apple</string>
+    <string name="name">Name</string>
+    <string name="enter_otp_code">Enter OTP Code</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="next">Next</string>
+    <string name="have_acc">Already have an account? </string>
+    <string name="set_password">Set Password</string>
+    <string name="retype_password">Retype Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="myan_speciality">အမျိုးအစား</string>
+    <string name="myan_appointment">ချိန်းဆိုမှုများ</string>
+    <string name="myan_profile">ပရိုဖိုင်</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="myan_recent_consult">မကြာသေးခင်က ဆွေးနွေးမှုမျာ</string>
+    <string name="myan_disease">ရောဂါအမျိုးအစားများ</string>
+    <string name="myan_confirm_consult">ဆွေးနွေးမှု တည်ပြုချက်</string>
+    <string name="myan_cancel">မလုပ်တော့ပါ</string>
+    <string name="myan_confirm">သေချာပါသည်</string>
+    <string name="facebook_app_id">766338640633444</string>
+    <string name="fb_login_protocol_scheme">fb766338640633444</string>
+
 </resources>

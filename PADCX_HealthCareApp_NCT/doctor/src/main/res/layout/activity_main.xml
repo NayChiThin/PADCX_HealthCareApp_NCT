@@ -1,19 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorGrayBackground"
     tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.padcx.doctor.views.components.CustomImageView
+                android:id="@+id/ivDoctor"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:cornerRadius="30dp"
+                android:src="@drawable/doctor"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="15dp"/>
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ivDoctor"
+                android:layout_marginStart="21dp"
+                android:textSize="20sp"
+                android:layout_marginTop="21dp"
+                android:textColor="@color/colorTextBold"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Name"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvConsultRequest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                tools:itemCount="1"
+                tools:listitem="@layout/consult_request_items"
+                android:layout_below="@id/ivDoctor"/>
+            <TextView
+                android:id="@+id/tvPreviousConsult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/colorTextBold"
+                android:layout_below="@id/rvConsultRequest"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="33dp"
+                android:text="@string/myan_previous_consult"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPreviousConsult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPreviousConsult"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:orientation="vertical"
+                tools:itemCount="2"
+                tools:listitem="@layout/previous_consult_items"/>
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

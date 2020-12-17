@@ -1,5 +1,8 @@
 package com.padcx.shared.network.auth
 
+import android.net.Uri
+import android.util.Log
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 
@@ -36,5 +39,34 @@ object FirebaseAuthManager:AuthManager {
 
     override fun getUserId(): String {
         return mFirebaseAuth.currentUser?.uid?:""
+    }
+
+    override fun setUserPhoneNumber(phoneNumber:String) {
+        // update phone number needs verification
+    }
+
+    override fun setUserPassword(password: String) {
+        mFirebaseAuth.currentUser?.updatePassword(password)
+    }
+
+    override fun getUserPhoneNumber(): String {
+        return mFirebaseAuth.currentUser?.phoneNumber?:""
+    }
+
+    override fun getUserPhoto(): String {
+        return mFirebaseAuth.currentUser?.photoUrl?.toString()?:""
+    }
+
+    override fun loginWithFb(token: String,onSuccess: () -> Unit,onFailure: (String) -> Unit) {
+        val credential = FacebookAuthProvider.getCredential(token)
+        mFirebaseAuth.signInWithCredential(credential)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    onSuccess()
+                } else {
+                    // If sign in fails, display a message to the user.
+                    onFailure(task.exception?.message?:"Please check internet connection")
+                }
+            }
     }
 }

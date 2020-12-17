@@ -18,9 +18,9 @@ interface SpecialityDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertSpecialities(specialities:List<SpecialityVO>)
 
-    @Query("SELECT questions FROM speciality WHERE name=:name")
+    @Query("SELECT * FROM speciality WHERE name=:name")
     fun getSpecialityQuestions(name:String):LiveData<List<QuestionVO>>
 
-    @Query("SELECT medicine FROM speciality WHERE name=:name")
+    @Query("SELECT * FROM speciality WHERE name=:name")
     fun getSpecialityMedicines(name:String):LiveData<List<MedicineVO>>
 }

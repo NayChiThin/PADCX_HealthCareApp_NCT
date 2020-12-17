@@ -7,7 +7,7 @@ import com.padcx.shared.persistence.typeconverters.QuestionVOListTypeConverter
 @TypeConverters(QuestionVOListTypeConverter::class)
 data class ConsultRequestVO (
     @PrimaryKey
-    var id : String? = null,
+    var id : String = "",
     var caseSummary : List<QuestionVO>? = null,
     @Embedded(prefix = "patient_")
     var patient : PatientVO? = null,

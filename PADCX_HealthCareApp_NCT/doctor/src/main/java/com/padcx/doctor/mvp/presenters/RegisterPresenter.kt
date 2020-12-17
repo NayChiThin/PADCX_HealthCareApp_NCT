@@ -5,5 +5,6 @@ import com.padcx.shared.data.vos.DoctorVO
 import com.padcx.shared.mvp.presenters.BasePresenter
 
 interface RegisterPresenter: BasePresenter<RegisterView> {
-    fun onTapRegister(doctor: DoctorVO,email:String,password:String)
+    fun onTapNext(phone:String)
+    fun onUiReady()
 }

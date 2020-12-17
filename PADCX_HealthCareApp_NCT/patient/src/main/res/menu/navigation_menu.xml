@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="@string/myan_speciality"
+        android:icon="@drawable/home"/>
+    <item
+        android:id="@+id/message"
+        android:title="@string/myan_appointment"
+        android:icon="@drawable/chat_square_text_fill"/>
+    <item
+        android:id="@+id/profile"
+        android:title="@string/myan_profile"
+        android:icon="@drawable/user_avatar_filled"/>
+</menu>

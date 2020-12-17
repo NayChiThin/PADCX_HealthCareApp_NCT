@@ -21,4 +21,6 @@ interface FirebaseApi {
     fun getCurrentPatientInfo(onSuccess: (patient:PatientVO) -> Unit,onFailure: (String) -> Unit)
     fun getConsultationsByPatientId(patientId:String,onSuccess: (List<ConsultVO>) -> Unit,onFailure: (String) -> Unit)
     fun getCurrentMessages(onSuccess: (List<MessageVO>) -> Unit,onFailure: (String) -> Unit)
+    fun getDoctorIdByPhoneNumber(phone:String,onSuccess: (String) -> Unit,onFailure: (String) -> Unit)
+    fun getPatientById(patientId:String,onSuccess: (PatientVO) -> Unit,onFailure: (String) -> Unit)
 }

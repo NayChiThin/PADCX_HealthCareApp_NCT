@@ -12,7 +12,7 @@ import com.padcx.shared.persistence.typeconverters.QuestionVOListTypeConverter
 @TypeConverters(QuestionVOListTypeConverter::class,MessageVOListTypeConverter::class,PrescriptionVOListTypeConverter::class)
 data class ConsultVO (
     @PrimaryKey
-    var id:String? = null,
+    var id:String = "",
     var caseSummary: List<QuestionVO>? = null,
     var prescription: List<PrescriptionVO>? = null,
     var messages: List<MessageVO>? = null,
@@ -21,7 +21,7 @@ data class ConsultVO (
     @Embedded(prefix = "patient_")
     var patient : PatientVO? = null
 )
-fun ConsultVO.toConsultMap():HashMap<String,String?> {
+fun ConsultVO.toConsultMap():HashMap<String,String> {
     val consultMap = hashMapOf(
         "id" to id
     )

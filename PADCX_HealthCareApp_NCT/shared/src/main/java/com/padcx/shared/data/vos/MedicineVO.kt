@@ -6,7 +6,8 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "medicine")
 data class MedicineVO(
-    @SerializedName("name") var name:String? = null,
+    @PrimaryKey
+    @SerializedName("name") var name:String = "",
     @SerializedName("cost") var cost:Float? = null
 )
 fun MedicineVO.toMedicineMap():HashMap<String,Any?> {

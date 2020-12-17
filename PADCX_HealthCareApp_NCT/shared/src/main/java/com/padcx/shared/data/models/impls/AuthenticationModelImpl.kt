@@ -26,7 +26,27 @@ object AuthenticationModelImpl:AuthenticationModel {
         mAuthManager.register(email, password, userName, onSuccess, onFailure)
     }
 
+    override fun getUserId(): String {
+        return mAuthManager.getUserId()
+    }
+
+    override fun getUserPhoto(): String {
+        return mAuthManager.getUserPhoto()
+    }
+
+    override fun getUserPhoneNumber(): String {
+        return mAuthManager.getUserPhoneNumber()
+    }
+
+    override fun setUserPhoneNumber(phone: String) {
+        mAuthManager.setUserPhoneNumber(phone)
+    }
+
     override fun getUserName(): String {
         return mAuthManager.getUserName()
+    }
+
+    override fun loginWithFb(token: String, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
+        mAuthManager.loginWithFb(token,onSuccess,onFailure)
     }
 }

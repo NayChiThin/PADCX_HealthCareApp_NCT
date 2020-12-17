@@ -18,3 +18,5 @@ const val CHILD_DOCTOR = "doctor"
 const val CHILD_MESSAGES = "messages"
 const val CHILD_MEDICINE = "medicine"
 const val CHILD_QUESTIONS = "questions"
+
+const val EXTRA_DOCTOR_ID = "doctorid"

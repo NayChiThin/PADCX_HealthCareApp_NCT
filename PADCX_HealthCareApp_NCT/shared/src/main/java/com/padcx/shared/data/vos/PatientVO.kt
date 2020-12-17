@@ -11,7 +11,7 @@ import com.padcx.shared.persistence.typeconverters.QuestionVOListTypeConverter
 @TypeConverters(AddressVOListTypeConverter::class,DoctorVOListTypeConverter::class,QuestionVOListTypeConverter::class)
 data class PatientVO(
     @PrimaryKey
-    var id : String? = null,
+    var id : String = "",
     var name:String? = null,
     var address:List<AddressVO>? = null,
     var profilephoto:String? = null,

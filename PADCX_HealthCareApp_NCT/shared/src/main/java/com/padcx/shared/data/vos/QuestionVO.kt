@@ -11,7 +11,7 @@ data class QuestionVO(
     @SerializedName("ask_time") var ask_time:String? = null,
     @SerializedName("answer") var answer:String? = null,
     @PrimaryKey
-    @SerializedName("name") var name:String? = null
+    @SerializedName("name") var name:String = ""
 )
 fun QuestionVO.toQuestionMap(): HashMap<String, String?> {
     val questionMap = hashMapOf(

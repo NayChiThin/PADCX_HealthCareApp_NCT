@@ -10,7 +10,7 @@ import com.padcx.shared.persistence.typeconverters.PrescriptionVOListTypeConvert
 @TypeConverters(PrescriptionVOListTypeConverter::class)
 data class CheckoutVO (
         @PrimaryKey
-        var id : String? = null,
+        var id : String = "",
         var prescription:List<PrescriptionVO>? = null,
         var deliverAddress:String? = null,
         @Embedded
