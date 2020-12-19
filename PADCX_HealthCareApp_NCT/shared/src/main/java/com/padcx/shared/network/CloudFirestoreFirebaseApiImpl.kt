@@ -538,8 +538,7 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
             }
     }
 
-    override fun getConsultationsByPatientId(
-        patientId: String,
+    override fun getConsultations(
         onSuccess: (List<ConsultVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
@@ -709,19 +708,21 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
                                             prescriptions.add(prescription)
                                         }
                                     }
+
+                                    val consultation = ConsultVO()
+                                    consultation.id = data?.get("id") as String
+                                    consultation.patient = patient
+                                    consultation.caseSummary = questionList
+                                    consultation.prescription = prescriptions
+                                    consultation.messages = messages
+                                    consultation.doctor = doctor
+                                    consultationList.add(consultation)
                                 }
+
+                                onSuccess(consultationList)
                             }
 
-                        val consultation = ConsultVO()
-                        consultation.id = data?.get("id") as String
-                        consultation.patient = patient
-                        consultation.caseSummary = questionList
-                        consultation.prescription = prescriptions
-                        consultation.messages = messages
-                        consultation.doctor = doctor
-                        consultationList.add(consultation)
                     }
-                    onSuccess(consultationList)
                 }
             }
     }

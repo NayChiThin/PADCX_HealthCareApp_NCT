@@ -8,6 +8,7 @@ import com.padcx.shared.data.models.AuthenticationModel
 import com.padcx.shared.data.models.HomeModel
 import com.padcx.shared.data.models.impls.AuthenticationModelImpl
 import com.padcx.shared.data.models.impls.HomeModelImpl
+import com.padcx.shared.data.vos.ConsultRequestVO
 import com.padcx.shared.mvp.presenters.AbstractBasePresenter
 
 class HomePresenterImpl: HomePresenter,AbstractBasePresenter<HomeView>() {
@@ -19,10 +20,10 @@ class HomePresenterImpl: HomePresenter,AbstractBasePresenter<HomeView>() {
     override fun onUiReady(lifecycleOwner:LifecycleOwner) {
         patientId = mAuthenticationModel.getUserId()
         loadDataFromAPI(patientId)
-        loadDataFromDb(lifecycleOwner,patientId)
+        loadDataFromDb(lifecycleOwner)
     }
 
-    private fun loadDataFromDb(lifecycleOwner: LifecycleOwner,patientId:String) {
+    private fun loadDataFromDb(lifecycleOwner: LifecycleOwner) {
         mHomeModel.getSpecialitiesFromDb()
             .observe(lifecycleOwner, Observer {
                 it?.let {
@@ -37,12 +38,21 @@ class HomePresenterImpl: HomePresenter,AbstractBasePresenter<HomeView>() {
                     mView.displayRecentDoctorList(it)
                 }
             })
+
+        mHomeModel.getConsultByPatientIdFromDb(patientId)
+            .observe(lifecycleOwner, Observer {
+                it?.let {
+                    // show accepted consults
+                    mView.displayAcceptedConsult(it)
+                }
+            })
     }
 
     private fun loadDataFromAPI(patientId:String) {
         // get specialities
         mHomeModel.getSpecialities(
             onSuccess = {
+
             },
             onFailure = {
                 mView.showError(it)
@@ -52,6 +62,15 @@ class HomePresenterImpl: HomePresenter,AbstractBasePresenter<HomeView>() {
         mHomeModel.getRecentDoctors(
             patientId,
             onSuccess = {
+            },
+            onFailure = {
+                mView.showError(it)
+            }
+        )
+        // get accepted consult
+        mHomeModel.getConsultation(
+            onSuccess = {
+//                mView.displayAcceptedConsult(it)
             },
             onFailure = {
                 mView.showError(it)

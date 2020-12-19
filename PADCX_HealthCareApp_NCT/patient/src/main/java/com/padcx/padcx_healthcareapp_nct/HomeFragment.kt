@@ -16,6 +16,8 @@ import com.padcx.padcx_healthcareapp_nct.mvp.presenters.HomePresenter
 import com.padcx.padcx_healthcareapp_nct.mvp.presenters.HomePresenterImpl
 import com.padcx.padcx_healthcareapp_nct.mvp.views.HomeView
 import com.padcx.padcx_healthcareapp_nct.views.components.CustomDialogConfirmRequest
+import com.padcx.shared.data.vos.ConsultRequestVO
+import com.padcx.shared.data.vos.ConsultVO
 import com.padcx.shared.data.vos.DoctorVO
 import com.padcx.shared.data.vos.SpecialityVO
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -47,6 +49,12 @@ class HomeFragment : Fragment(),HomeView {
         mHomePresenter.initPresenter(this)
     }
     private fun setUpRecyclerView() {
+
+        mConsultListAdapter = ConsultationListAdapter(mHomePresenter)
+        val consultLayoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+        rvConsultation.adapter = mConsultListAdapter
+        rvConsultation.layoutManager = consultLayoutManager
+
         mSpecialityListAdapter = SpecialityListAdapter(mHomePresenter)
         val layoutManager = GridLayoutManager(context,2)
         rvSpeciality.adapter = mSpecialityListAdapter
@@ -57,10 +65,6 @@ class HomeFragment : Fragment(),HomeView {
         rvRecentConsult.adapter = mRecentDoctorListAdapter
         rvRecentConsult.layoutManager = doctorLayoutManager
 
-        mConsultListAdapter = ConsultationListAdapter(mHomePresenter)
-        val consultLayoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-        rvConsultation.adapter = mConsultListAdapter
-        rvConsultation.layoutManager = consultLayoutManager
     }
 
     override fun onCreateView(
@@ -81,6 +85,10 @@ class HomeFragment : Fragment(),HomeView {
         }else {
             mRecentDoctorListAdapter.setNewData(doctors.toMutableList())
         }
+    }
+
+    override fun displayAcceptedConsult(consultList: List<ConsultVO>) {
+        mConsultListAdapter.setNewData(consultList.toMutableList())
     }
 
     override fun displayRequestDialog(specialityName:String) {

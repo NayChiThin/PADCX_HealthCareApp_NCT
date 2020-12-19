@@ -12,8 +12,10 @@ interface HomeModel {
     fun getSpecialitiesFromDb():LiveData<List<SpecialityVO>>
     fun getRecentDoctorsFromDb(patientId:String):LiveData<List<DoctorVO>>
     fun getPreviousConsultations(doctorId:String,onSuccess: (List<ConsultVO>) -> Unit,onFailure: (String) -> Unit)
-    fun getPreviousConsultationsFromDb(doctorId: String):LiveData<List<ConsultVO>>
     fun getConsultRequest(onSuccess: (List<ConsultRequestVO>) -> Unit,onFailure: (String) -> Unit)
     fun getConsultRequestFromDb(speciaityName: String):LiveData<List<ConsultRequestVO>>
     fun getDoctorById(doctorId: String,onSuccess: (DoctorVO) -> Unit,onFailure: (String) -> Unit)
+    fun getConsultation(onSuccess: (List<ConsultVO>) -> Unit,onFailure: (String) -> Unit)
+    fun getPreviousConsultationsFromDb(doctorId: String):LiveData<List<ConsultVO>>
+    fun getConsultByPatientIdFromDb(patientId: String):LiveData<List<ConsultVO>>
 }

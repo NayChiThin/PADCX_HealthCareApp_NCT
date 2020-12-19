@@ -22,7 +22,6 @@ class PatientDetailPresenterImpl:
     private var doctor : DoctorVO = DoctorVO()
     override fun onTapStartConsult(request:ConsultRequestVO) {
         val consult = ConsultVO()
-
         request.status = "accepted"
         consult.doctor = doctor
         consult.patient = request.patient

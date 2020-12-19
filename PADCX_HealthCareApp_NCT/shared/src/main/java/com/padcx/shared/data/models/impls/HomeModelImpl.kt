@@ -64,7 +64,7 @@ object HomeModelImpl : HomeModel, BaseModel() {
             onSuccess = {
                 mTheDB.consultDao().deleteConsultations()
                 mTheDB.consultDao().insertConsultations(it)
-                onSuccess(it)
+//                onSuccess(it)
             },
             onFailure = {
                 onFailure(it)
@@ -101,5 +101,23 @@ object HomeModelImpl : HomeModel, BaseModel() {
         mFirebaseApi.getDoctorById(doctorId, onSuccess, onFailure)
     }
 
+    override fun getConsultation(
+        onSuccess: (List<ConsultVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mFirebaseApi.getConsultations(
+            onSuccess={
+                mTheDB.consultDao().deleteConsultations()
+                mTheDB.consultDao().insertConsultations(it)
+                onSuccess(it)
+            },
+            onFailure = {
+                onFailure(it)
+            }
+        )
+    }
 
+    override fun getConsultByPatientIdFromDb(patientId: String): LiveData<List<ConsultVO>> {
+        return mTheDB.consultDao().getConsultationByPatientId(patientId)
+    }
 }

@@ -7,9 +7,10 @@ import com.padcx.padcx_healthcareapp_nct.delegates.ConsultationItemDelegate
 import com.padcx.padcx_healthcareapp_nct.views.viewholders.BaseConsultationListViewHolder
 import com.padcx.padcx_healthcareapp_nct.views.viewholders.ConsultationListViewHolder
 import com.padcx.shared.adapters.BaseRecyclerAdapter
+import com.padcx.shared.data.vos.ConsultVO
 import com.padcx.shared.data.vos.DoctorVO
 
-class ConsultationListAdapter(private val mDelegate:ConsultationItemDelegate):BaseRecyclerAdapter<BaseConsultationListViewHolder,DoctorVO>() {
+class ConsultationListAdapter(private val mDelegate:ConsultationItemDelegate):BaseRecyclerAdapter<BaseConsultationListViewHolder,ConsultVO>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

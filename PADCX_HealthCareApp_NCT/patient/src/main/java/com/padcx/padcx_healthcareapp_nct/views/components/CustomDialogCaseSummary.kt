@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.Window
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.padcx.padcx_healthcareapp_nct.R
 import com.padcx.padcx_healthcareapp_nct.adapters.CaseSummaryQuestionListAdapter

@@ -1,7 +1,7 @@
 package com.padcx.shared.adapters
 
 import androidx.recyclerview.widget.RecyclerView
-import com.padcmyanmar.androidftc.shared.views.viewholders.BaseViewHolder
+import com.padcx.shared.views.viewholders.BaseViewHolder
 
 abstract class BaseRecyclerAdapter<T: BaseViewHolder<W>,W> : RecyclerView.Adapter<T>(){
     var mData:MutableList<W> = arrayListOf()

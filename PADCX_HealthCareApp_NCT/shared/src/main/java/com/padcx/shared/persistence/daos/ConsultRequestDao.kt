@@ -17,4 +17,7 @@ interface ConsultRequestDao {
 
     @Query("DELETE FROM consult_request")
     fun deleteConsultRequests()
+
+    @Query("SELECT * FROM consult_request WHERE patient_id=:patientId AND status='accepted'")
+    fun getConsultRequestsByPatientId(patientId:String):LiveData<List<ConsultRequestVO>>
 }
