@@ -14,17 +14,10 @@ class LoginPresenterImpl:LoginPresenter,AbstractBasePresenter<LoginView>() {
 
     private val mAuthenticationModel : AuthenticationModel = AuthenticationModelImpl
     private val mLoginModel : LoginModel = LoginModelImpl
+    private var uid = ""
 
     override fun onTapLogin(phoneNumber: String, password: String) {
-        /*if(phoneNumber.isNotEmpty()) {
-            mLoginModel.getDoctorIdByPhoneNumber(phoneNumber,
-            onSuccess = {
-                mView.navigateToHome(it)
-            },
-            onFailure = {
-                mView.showError(it)
-            })
-        }*/
+
     }
 
     override fun onTapSignInWithFb() {
@@ -39,5 +32,12 @@ class LoginPresenterImpl:LoginPresenter,AbstractBasePresenter<LoginView>() {
             onFailure = {
                 mView.showError(it)
             })
+    }
+
+    override fun onUiReady() {
+        uid = mAuthenticationModel.getUserId()
+        if(!uid.isNullOrBlank()) {
+            mView.navigateToHome()
+        }
     }
 }

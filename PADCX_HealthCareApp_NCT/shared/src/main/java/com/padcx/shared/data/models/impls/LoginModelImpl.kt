@@ -1,12 +1,15 @@
 package com.padcx.shared.data.models.impls
 
+import androidx.lifecycle.LiveData
+import com.padcx.shared.data.models.BaseModel
 import com.padcx.shared.data.models.LoginModel
 import com.padcx.shared.data.vos.DoctorVO
 import com.padcx.shared.data.vos.PatientVO
+import com.padcx.shared.data.vos.QuestionVO
 import com.padcx.shared.network.CloudFirestoreFirebaseApiImpl
 import com.padcx.shared.network.FirebaseApi
 
-object LoginModelImpl:LoginModel {
+object LoginModelImpl:LoginModel,BaseModel() {
     override var mFirebaseApi: FirebaseApi = CloudFirestoreFirebaseApiImpl
 
     override fun getDoctorById(
@@ -32,4 +35,5 @@ object LoginModelImpl:LoginModel {
     ) {
         mFirebaseApi.getPatientById(patientId,onSuccess,onFailure)
     }
+
 }

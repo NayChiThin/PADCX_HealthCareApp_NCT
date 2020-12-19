@@ -1,10 +1,7 @@
 package com.padcx.shared.persistence.daos
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.padcx.shared.data.vos.DoctorVO
 
 @Dao
@@ -21,4 +18,8 @@ interface DoctorDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDoctor(doctor:DoctorVO)
+
+    @Query("DELETE FROM doctors")
+    fun deleteDoctors()
+
 }

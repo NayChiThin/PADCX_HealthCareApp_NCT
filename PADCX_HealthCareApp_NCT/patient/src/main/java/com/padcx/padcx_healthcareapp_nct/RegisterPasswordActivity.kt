@@ -28,7 +28,7 @@ class RegisterPasswordActivity : BaseActivity(),RegisterPasswordView {
 
         setUpPresenter()
         setUpListener()
-        mRegisterPasswordPresenter.onUiReady()
+        mRegisterPasswordPresenter.onUiReady(this)
     }
     private fun setUpListener() {
         btnConfirm.setOnClickListener {

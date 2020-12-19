@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 data class MedicineVO(
     @PrimaryKey
     @SerializedName("name") var name:String = "",
-    @SerializedName("cost") var cost:Float? = null
+    @SerializedName("cost") var cost:Long? = null
 )
 fun MedicineVO.toMedicineMap():HashMap<String,Any?> {
     val medicineMap = hashMapOf(

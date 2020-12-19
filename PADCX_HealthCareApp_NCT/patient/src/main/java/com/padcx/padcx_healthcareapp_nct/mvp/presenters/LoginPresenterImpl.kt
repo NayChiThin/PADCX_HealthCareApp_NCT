@@ -19,7 +19,15 @@ import com.padcx.shared.mvp.presenters.AbstractBasePresenter
 class LoginPresenterImpl:LoginPresenter,AbstractBasePresenter<LoginView>() {
 
     private val mAuthenticationModel : AuthenticationModel = AuthenticationModelImpl
-    private val mLoginModel : LoginModel = LoginModelImpl
+    private var uid = ""
+    override fun onUiReady() {
+        uid = mAuthenticationModel.getUserId()
+        if(uid.isNotEmpty() && uid!=""){
+            mView.navigateToHome()
+        }
+
+
+    }
 
     override fun onTapLogin(phoneNumber: String, password: String) {
 

@@ -7,12 +7,12 @@ import com.padcx.shared.data.vos.AddressVO
 
 class AddressVOListTypeConverter {
     @TypeConverter
-    fun toString(addressVOList:List<AddressVO>):String{
+    fun toString(addressVOList:List<AddressVO>?):String{
         return Gson().toJson(addressVOList)
     }
     @TypeConverter
     fun toAddressVOList(addressVOListJsonString:String):List<AddressVO> {
         val addressVOListType = object : TypeToken<ArrayList<AddressVO>>(){}.type
-        return Gson().fromJson(addressVOListJsonString,addressVOListType)
+        return Gson().fromJson(addressVOListJsonString,addressVOListType)?: arrayListOf()
     }
 }

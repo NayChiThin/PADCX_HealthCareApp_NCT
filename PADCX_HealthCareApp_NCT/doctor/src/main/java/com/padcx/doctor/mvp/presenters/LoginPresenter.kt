@@ -7,4 +7,5 @@ interface LoginPresenter:BasePresenter<LoginView> {
     fun onTapLogin(phoneNumber:String,password:String)
     fun onTapSignInWithFb()
     fun onSuccessLoginWithFb(token:String)
+    fun onUiReady()
 }

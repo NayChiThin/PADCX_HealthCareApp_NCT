@@ -19,6 +19,7 @@ object ConsultModelImpl : ConsultModel,BaseModel() {
     ) {
         mFirebaseApi.getSpecialityQuestions(specialityName,
             onSuccess={
+                mTheDB.questionDao().deleteQuestions()
                 mTheDB.questionDao().insertQuestions(it)
             },
             onFailure={
@@ -33,6 +34,7 @@ object ConsultModelImpl : ConsultModel,BaseModel() {
     ) {
         mFirebaseApi.getSpecialityMedicines(specialityName,
             onSuccess={
+                mTheDB.medicineDao().deleteMedicines()
                 mTheDB.medicineDao().insertMedicines(it)
             },
             onFailure = {
@@ -51,6 +53,7 @@ object ConsultModelImpl : ConsultModel,BaseModel() {
     override fun getMessages(onSuccess: (List<MessageVO>) -> Unit, onFailure: (String) -> Unit) {
         mFirebaseApi.getCurrentMessages(
             onSuccess = {
+                mTheDB.messageDao().deleteMessages()
                 mTheDB.messageDao().insertMessages(it)
             },
             onFailure = {

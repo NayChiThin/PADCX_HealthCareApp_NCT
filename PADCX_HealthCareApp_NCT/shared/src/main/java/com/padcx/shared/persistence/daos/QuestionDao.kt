@@ -1,10 +1,7 @@
 package com.padcx.shared.persistence.daos
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.padcx.shared.data.vos.QuestionVO
 
 @Dao
@@ -14,4 +11,10 @@ interface QuestionDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertQuestions(questions:List<QuestionVO>)
+
+    @Query("SELECT * FROM questions WHERE type='General'")
+    fun getGeneralQuestions():LiveData<List<QuestionVO>>
+
+    @Query("DELETE FROM questions")
+    fun deleteQuestions()
 }

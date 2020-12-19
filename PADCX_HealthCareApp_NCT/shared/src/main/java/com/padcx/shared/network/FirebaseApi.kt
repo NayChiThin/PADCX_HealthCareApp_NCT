@@ -23,4 +23,9 @@ interface FirebaseApi {
     fun getCurrentMessages(onSuccess: (List<MessageVO>) -> Unit,onFailure: (String) -> Unit)
     fun getDoctorIdByPhoneNumber(phone:String,onSuccess: (String) -> Unit,onFailure: (String) -> Unit)
     fun getPatientById(patientId:String,onSuccess: (PatientVO) -> Unit,onFailure: (String) -> Unit)
+    fun getGeneralQuestions(onSuccess: (List<QuestionVO>) -> Unit,onFailure: (String) -> Unit)
+    fun updateGeneralQuestionAnswer(patientId: String,question: QuestionVO,onSuccess: () -> Unit,onFailure: (String) -> Unit)
+    fun getConsultationsByDoctorId(doctorId:String,onSuccess: (List<ConsultVO>) -> Unit,onFailure: (String) -> Unit)
+    fun getConsultRequests(onSuccess: (List<ConsultRequestVO>) -> Unit,onFailure: (String) -> Unit)
+    fun updateRequestStatus(request:ConsultRequestVO,onSuccess: () -> Unit,onFailure: (String) -> Unit)
 }

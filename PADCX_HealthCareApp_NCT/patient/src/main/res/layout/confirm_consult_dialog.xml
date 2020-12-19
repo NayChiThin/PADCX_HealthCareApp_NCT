@@ -19,6 +19,7 @@
         android:layout_below="@id/ivDialogPoster"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
+        android:paddingBottom="5dp"
         android:textColor="@color/colorGrayDark"
         android:fontFamily="@font/raleway_bold"
         android:textSize="19sp"/>
@@ -26,15 +27,16 @@
         android:id="@+id/tvDialogContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="သွားဖက်ဆိုင်ရာ ဆရာဝန်နှင့် တိုင်ပင်ဆွေးနွေးရန်Consultation Request ပြုလုပ်မှာ သေချာပါသလား ?"
+        android:text="@string/myan_request_confirm"
         android:layout_below="@id/tvDialogTitle"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="19dp"
         android:layout_marginTop="25dp"
+        android:paddingBottom="5dp"
         android:fontFamily="@font/raleway_medium"
         android:textSize="16sp"
         android:textColor="@color/colorDialogText"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="10dp"/>
     <TextView
         android:id="@+id/tvCancel"
         android:layout_width="wrap_content"
@@ -53,8 +55,8 @@
         android:layout_height="wrap_content"
         android:text="@string/myan_confirm"
         app:cornerRadius="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="22dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="10dp"
         android:backgroundTint="@color/colorPrimary"
         android:layout_below="@id/tvDialogContent"
         android:fontFamily="@font/raleway_bold"

@@ -7,12 +7,12 @@ import com.padcx.shared.data.vos.QuestionVO
 
 class QuestionVOListTypeConverter {
     @TypeConverter
-    fun toString(questionVOList:List<QuestionVO>):String {
+    fun toString(questionVOList:List<QuestionVO>?):String {
         return Gson().toJson(questionVOList)
     }
     @TypeConverter
     fun toQuestionVOList(questionVOListJsonString:String):List<QuestionVO> {
         val questionVOListType = object : TypeToken<ArrayList<QuestionVO>>(){}.type
-        return Gson().fromJson(questionVOListJsonString,questionVOListType)
+        return Gson().fromJson(questionVOListJsonString,questionVOListType)?: arrayListOf()
     }
 }

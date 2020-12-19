@@ -27,6 +27,31 @@
     <string name="myan_cancel">မလုပ်တော့ပါ</string>
     <string name="myan_confirm">သေချာပါသည်</string>
     <string name="facebook_app_id">766338640633444</string>
+    <string name="myan_dob">မွေးနေ့</string>
     <string name="fb_login_protocol_scheme">fb766338640633444</string>
+    <string name="myan_request_confirm">တိုင်င်ဆွေးနွေးရန်Consultation Request ပြုလုပ်မှာ သေချာပါသလား ?</string>
+    <string name="myan_fill_summary">လူနာအချက်အလက်များဖြည့်ပါ</string>
+    <string name="myan_general_questions">အထွေထွေမေးခွန်းများ</string>
+    <string name="myan_speciality_question">ရောဂါဆိုင်ရာမေးခွန်းများ</string>
+    <string name="myan_height">အရပ်</string>
+    <string name="ft_unit">ft</string>
+    <string name="myan_blood_type">သွေးအမျိုးအစား</string>
+    <string name="type_a">A</string>
+    <string name="type_b">B</string>
+    <string name="type_ab">AB</string>
+    <string name="type_o">O</string>
+    <string name="myan_pound">ပေါင်ချိန်</string>
+    <string name="lb_unit">lb</string>
+    <string name="myan_blood_pressure">သွေးပေါင်ချိန်</string>
+    <string name="mmhg_unit">mmHg</string>
+    <string name="myan_medicine">မတည့်သောဆေး</string>
+    <string name="myan_bad_medicine">မတည့်သောဆေး ရှိလျှင် ရေးသားပေးပါ</string>
+    <string name="myan_continue">ဆက်ရန်</string>
+    <string name="colon">:</string>
+    <string name="myan_make_request">ချိန်းဆိုမှု ပြုလုပ်မည်</string>
+    <string name="myan_confirm_detail">အချက်အလက်များအား အတည်ပြုပေးပါ</string>
+    <string name="myan_patient_detail">လူနာအချက်အလက်များ</string>
+    <string name="myan_consult_ready">ဆွေးနွေးမှု ပြုလုပ်နိုင်ပါပြီ</string>
+    <string name="myan_start_consult">စတင် ဆွေးနွေးမည်</string>
 
 </resources>

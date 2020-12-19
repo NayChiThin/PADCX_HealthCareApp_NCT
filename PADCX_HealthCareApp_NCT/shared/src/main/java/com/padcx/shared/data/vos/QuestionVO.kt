@@ -3,6 +3,7 @@ package com.padcx.shared.data.vos
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 @Entity(tableName = "questions")
 data class QuestionVO(
@@ -12,7 +13,7 @@ data class QuestionVO(
     @SerializedName("answer") var answer:String? = null,
     @PrimaryKey
     @SerializedName("name") var name:String = ""
-)
+):Serializable
 fun QuestionVO.toQuestionMap(): HashMap<String, String?> {
     val questionMap = hashMapOf(
         "sentence" to sentence,

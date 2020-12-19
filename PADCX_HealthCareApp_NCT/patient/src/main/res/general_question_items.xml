@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="3">
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="လူနာအမည်"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_weight="1.3"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="2dp"/>
+    <TextView
+        android:id="@+id/tvColon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:layout_weight="0.4"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="2dp"/>
+    <TextView
+        android:id="@+id/tvAnswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aung Aung"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_weight="1.3"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="2dp"/>
+</LinearLayout>

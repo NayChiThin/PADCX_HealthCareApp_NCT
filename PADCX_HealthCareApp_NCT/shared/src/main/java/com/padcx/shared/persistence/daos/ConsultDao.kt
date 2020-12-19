@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.padcx.shared.data.vos.ConsultVO
+import com.padcx.shared.data.vos.DoctorVO
 
 @Dao
 interface ConsultDao {
@@ -23,4 +24,10 @@ interface ConsultDao {
 
     @Query("SELECT * FROM consultation WHERE id=:consultId")
     fun getConsultationById(consultId:String):LiveData<ConsultVO>
+
+    @Query("DELETE FROM consultation")
+    fun deleteConsultations()
+
+    @Query("SELECT * FROM consultation WHERE doctor_id=:doctorId")
+    fun getConsultationByDoctorId(doctorId:String):LiveData<List<ConsultVO>>
 }

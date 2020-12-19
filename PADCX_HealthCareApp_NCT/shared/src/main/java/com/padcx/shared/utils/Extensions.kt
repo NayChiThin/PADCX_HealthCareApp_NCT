@@ -17,6 +17,18 @@ fun MutableMap<String,Any>.toAddressVO() : AddressVO {
     address.address = this["address"] as String
     return address
 }
+fun MutableMap<String,Any>.toConsultRequestVO(
+    caseSummary:MutableList<QuestionVO>,
+    patient:PatientVO
+):ConsultRequestVO{
+    val request = ConsultRequestVO()
+    request.id = this["id"] as String
+    request.speciality = this["speciality"] as String
+    request.status = this["status"] as String
+    request.patient = patient
+    request.caseSummary = caseSummary
+    return request
+}
 fun MutableMap<String,Any>.toDeliverRoutineVO() : DeliverRoutineVO {
     val deliverRoutine = DeliverRoutineVO()
     deliverRoutine.date = this["date"] as String
@@ -41,7 +53,7 @@ fun MutableMap<String,Any>.toDoctorVO():DoctorVO {
 fun MutableMap<String,Any>.toMedicineVO() : MedicineVO {
     val medicine = MedicineVO()
     medicine.name = this["name"] as String
-    medicine.cost = this["cost"] as Float
+    medicine.cost = this["cost"] as Long
     return medicine
 }
 fun MutableMap<String,Any>.toMessageVO() : MessageVO {
@@ -57,7 +69,7 @@ fun MutableMap<String,Any>.toMessageVO() : MessageVO {
 fun MutableMap<String,Any>.toPrescriptionVO():PrescriptionVO {
     val prescription = PrescriptionVO()
     prescription.id = this["id"] as String
-    prescription.count = this["count"] as Int
+    prescription.count = (this["count"] as Long).toInt()
     val routine : Map<String,Any> = this["routine"] as Map<String,Any>
     prescription.routine = routine.toMutableMap().toRoutineVO()
     val medicine : Map<String,Any> = this["medicine"] as Map<String, Any>
@@ -67,14 +79,20 @@ fun MutableMap<String,Any>.toPrescriptionVO():PrescriptionVO {
 fun MutableMap<String,Any>.toRoutineVO():RoutineVO {
     val routine = RoutineVO()
     routine.day = this["day"] as String
-    routine.times_per_day = this["times_per_day"] as Int
+    routine.times_per_day = (this["times_per_day"] as Long).toInt()
     routine.time = this["time"] as String
-    routine.total_days = this["total_days"] as Int
+    routine.total_days = (this["total_days"] as Long).toInt()
     return routine
 }
-fun MutableMap<String,Any>.toSpecialityVO():SpecialityVO {
+fun MutableMap<String,Any?>.toSpecialityVO(
+    medicines:MutableList<MedicineVO>,
+    questions: MutableList<QuestionVO>
+):SpecialityVO {
     val speciality = SpecialityVO()
     speciality.name = this["name"] as String
+    speciality.image = this["image"] as String
+    speciality.medicine = medicines
+    speciality.questions = questions
     return speciality
 }
 fun MutableMap<String,Any>.toPatientVO(

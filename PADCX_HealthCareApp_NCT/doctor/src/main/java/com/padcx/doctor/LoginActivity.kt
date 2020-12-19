@@ -38,6 +38,8 @@ class LoginActivity : BaseActivity(),LoginView {
 
         setUpPresenter()
         setUpListeners()
+
+        mLoginPresenter.onUiReady()
     }
 
     private fun setUpPresenter() {
@@ -83,6 +85,7 @@ class LoginActivity : BaseActivity(),LoginView {
         startActivity(RegisterActivity.newIntent(this))
         finish()
     }
+
 
     override fun showError(error: String) {
         Snackbar.make(window.decorView,error, Snackbar.LENGTH_LONG).show()

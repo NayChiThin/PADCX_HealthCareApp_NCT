@@ -28,23 +28,60 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
         onSuccess: (specialities: List<SpecialityVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        db.collection(ROOT_SPECIALITY)
-            .addSnapshotListener { value, error ->
-                error?.let {
-                    onFailure(it.message ?: "Please check internet connection")
-                } ?: run {
-                    val specialityList: MutableList<SpecialityVO> = arrayListOf()
-                    val result = value?.documents ?: arrayListOf()
-                    for (document in result) {
-                        val data = document.data
-                        data?.let {
-                            val speciality = data.toSpecialityVO()
-                            specialityList.add(speciality)
+        val ref = db.collection(ROOT_SPECIALITY)
+        ref.addSnapshotListener { value, error ->
+            error?.let {
+                onFailure(it.message ?: "Please check internet connection")
+            } ?: run {
+                val specialityList: MutableList<SpecialityVO> = arrayListOf()
+                val result = value?.documents ?: arrayListOf()
+                for (document in result) {
+                    val data = document.data
+                    val medicineList: MutableList<MedicineVO> = arrayListOf()
+                    val questionList: MutableList<QuestionVO> = arrayListOf()
+                    // medicine
+                    ref.document(document.id)
+                        .collection(CHILD_MEDICINE)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "Please check internet connection")
+                            } ?: run {
+                                val medicineResult = value?.documents ?: arrayListOf()
+                                for (medicineDocument in medicineResult) {
+                                    val medicineData = medicineDocument.data
+                                    medicineData?.let {
+                                        val medicine = it.toMedicineVO()
+                                        medicineList.add(medicine)
+                                    }
+                                }
+                            }
                         }
+                    // questions
+                    ref.document(document.id)
+                        .collection(CHILD_QUESTIONS)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "Please check internet connection")
+                            } ?: run {
+                                val questionResult = value?.documents ?: arrayListOf()
+                                for (questionDocument in questionResult) {
+                                    val questionData = questionDocument.data
+                                    questionData?.let {
+                                        val question = it.toQuestionVO()
+                                        questionList.add(question)
+                                    }
+                                }
+                            }
+                        }
+                    data?.let {
+                        val speciality = data.toSpecialityVO(medicineList, questionList)
+
+                        specialityList.add(speciality)
                     }
-                    onSuccess(specialityList)
                 }
+                onSuccess(specialityList)
             }
+        }
     }
 
     override fun getSpecialityMedicines(
@@ -105,6 +142,7 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
         onFailure: (String) -> Unit
     ) {
         val dbRef = db.collection(ROOT_CONSULT_REQUEST).document()
+        consultRequest.id = dbRef.id
         dbRef.set(consultRequest.toConsultRequestMap())
             .addOnSuccessListener { Log.d("Success", "Added consult request") }
             .addOnFailureListener { Log.d("Failure", "Failed to add consult request") }
@@ -116,9 +154,13 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
                 .addOnFailureListener { Log.d("Failure", "Failed to add case summary") }
         }
         consultRequest.patient?.let {
+            dbRef.collection(CHILD_PATIENT)
+                .document(CHILD_PATIENT)
+                .set(it.toPatientMap())
+                .addOnSuccessListener { Log.d("Success","patient document added")}
+                .addOnFailureListener { Log.d("Failed","cannot add patient document") }
             val patientRef = dbRef.collection(CHILD_PATIENT)
-                .document(it.id ?: "")
-            patientRef.set(it.toPatientMap())
+                .document(CHILD_PATIENT)
             for (question in it.generalQuestions ?: arrayListOf()) {
                 patientRef.collection(CHILD_GENERAL_QUESTIONS)
                     .document(question.name ?: "")
@@ -141,6 +183,7 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
                     .addOnFailureListener { Log.d("Failure", "Failed adding doctor") }
             }
         }
+        onSuccess()
     }
 
     override fun addRecentDoctor(
@@ -163,7 +206,8 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
-        consultRef = db.collection(ROOT_CONSULTATION).document(consult.id ?: "")
+        consultRef = db.collection(ROOT_CONSULTATION).document()
+        consult.id = consultRef.id
         consultRef.set(consult.toConsultMap())
             .addOnSuccessListener { Log.d("Success", "Added") }
             .addOnFailureListener { Log.d("Failure", "Failed") }
@@ -182,8 +226,8 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
                 .addOnFailureListener { Log.d("Failure", "Failed adding doctor") }
         }
         consult.patient?.let {
-            val patientRef = consultRef.collection(CHILD_PATIENT)
-                .document(it.id ?: "")
+            val patientRef = consultRef.collection(CHILD_CONSULTEES)
+                .document(CHILD_PATIENT)
             patientRef.set(it.toPatientMap())
             for (question in it.generalQuestions ?: arrayListOf()) {
                 patientRef.collection(CHILD_GENERAL_QUESTIONS)
@@ -194,7 +238,7 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
             }
             for (address in it.address ?: arrayListOf()) {
                 patientRef.collection(CHILD_ADDRESS)
-                    .document(it.id ?: "")
+                    .document(address.id ?: "")
                     .set(address.toAddressMap())
                     .addOnSuccessListener { Log.d("Success", "Added address") }
                     .addOnFailureListener { Log.d("Failure", "Failed adding address") }
@@ -207,6 +251,7 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
                     .addOnFailureListener { Log.d("Failure", "Failed adding doctor") }
             }
         }
+        onSuccess()
     }
 
     override fun saveMessage(
@@ -370,7 +415,6 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
                         doctor = data.toDoctorVO()
                         onSuccess(doctor)
                     }
-                    onFailure("No doctor registered")
                 }
             }
     }
@@ -801,10 +845,14 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
                                 onFailure(it.message ?: "No connection")
                             } ?: run {
                                 val data1 = value?.data
-                                data1?.let {patientVO->
-                                    patient = patientVO.toPatientVO(recentDoctors, generalQuestions, addresses)
-                                    onSuccess(patient)
+                                data1?.let { patientVO ->
+                                    patient = patientVO.toPatientVO(
+                                        recentDoctors,
+                                        generalQuestions,
+                                        addresses
+                                    )
                                 }
+                                onSuccess(patient)
                             }
                         }
                     }
@@ -812,5 +860,366 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
 
             }
         }
+    }
+
+    override fun getGeneralQuestions(
+        onSuccess: (List<QuestionVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        val questionList: MutableList<QuestionVO> = arrayListOf()
+        db.collection(ROOT_QUESTIONS)
+            .addSnapshotListener { value, error ->
+                error?.let {
+                    onFailure(it.message ?: "No internet")
+                } ?: run {
+                    val result = value?.documents ?: arrayListOf()
+                    for (document in result) {
+                        val data = document.data
+                        data?.let {
+                            val question = data.toQuestionVO()
+                            questionList.add(question)
+                        }
+                    }
+                    onSuccess(questionList)
+                }
+            }
+    }
+
+    override fun updateGeneralQuestionAnswer(
+        patientId: String,
+        question: QuestionVO,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        db.collection(ROOT_PATIENTS)
+            .document(patientId)
+            .collection(CHILD_GENERAL_QUESTIONS)
+            .document(question.name)
+            .set(question.toQuestionMap())
+            .addOnSuccessListener { Log.d("Success", "updated anwers") }
+            .addOnFailureListener { onFailure(it.message ?: "Please check internet connection") }
+        onSuccess()
+    }
+
+    override fun getConsultationsByDoctorId(
+        doctorId: String,
+        onSuccess: (List<ConsultVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        val consultations: MutableList<ConsultVO> = arrayListOf()
+        val dbRef = db.collection(ROOT_CONSULTATION)
+        dbRef.addSnapshotListener { value, error ->
+            error?.let {
+                onFailure(it.message ?: "No internet")
+            } ?: run {
+                val result = value?.documents ?: arrayListOf()
+                for (document in result) {
+                    var consult = ConsultVO()
+                    val consultId = document.id
+                    // each consultation document
+                    var doctor = DoctorVO()
+                    var patient = PatientVO()
+                    val caseSummary: MutableList<QuestionVO> = arrayListOf()
+                    val prescription: MutableList<PrescriptionVO> = arrayListOf()
+                    val messages: MutableList<MessageVO> = arrayListOf()
+                    val generalQuestions: MutableList<QuestionVO> = arrayListOf()
+                    val addresses: MutableList<AddressVO> = arrayListOf()
+                    val recentDoctors: MutableList<DoctorVO> = arrayListOf()
+                    dbRef.document(consultId)
+                        .collection(CHILD_CONSULTEES)
+                        .document(CHILD_DOCTOR)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "No internet")
+                            } ?: run {
+                                val data = value?.data
+                                data?.let {
+                                    doctor = data.toDoctorVO()
+                                }
+                            }
+                        }
+                    val ref = dbRef.document(consultId)
+                        .collection(CHILD_CONSULTEES)
+                        .document(CHILD_PATIENT)
+
+                    // recent doctors for patient
+                    ref.collection(CHILD_RECENT_DOCTORS)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "No connection")
+                            } ?: run {
+                                val result1 = value?.documents ?: arrayListOf()
+                                for (document1 in result1) {
+                                    val data1 = document1.data
+                                    data1?.let {
+                                        val recentDoctor = it.toDoctorVO()
+                                        recentDoctors.add(recentDoctor)
+                                    }
+                                }
+                            }
+                        }
+                    // general questions for patient
+                    ref.collection(CHILD_GENERAL_QUESTIONS)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(
+                                    it.message ?: "NO internet connection"
+                                )
+                            } ?: run {
+                                val result1 = value?.documents ?: arrayListOf()
+                                for (document1 in result1) {
+                                    val data1 = document1.data
+                                    data1?.let {
+                                        val generalQuestion = it.toQuestionVO()
+                                        generalQuestions.add(generalQuestion)
+                                    }
+                                }
+                            }
+                        }
+                    // addresses for patient
+                    ref.collection(CHILD_ADDRESS)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(
+                                    it.message ?: "NO internet connection"
+                                )
+                            } ?: run {
+                                val result1 = value?.documents ?: arrayListOf()
+                                for (document1 in result1) {
+                                    val data1 = document1.data
+                                    data1?.let {
+                                        val address = it.toAddressVO()
+                                        addresses.add(address)
+                                    }
+                                }
+                            }
+                        }
+
+                    // patient
+                    dbRef.document(consultId)
+                        .collection(CHILD_CONSULTEES)
+                        .document(CHILD_PATIENT)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "No internet")
+                            } ?: run {
+                                val patientData = value?.data
+                                patientData?.let {
+                                    patient = patientData.toPatientVO(
+                                        recentDoctors,
+                                        generalQuestions,
+                                        addresses
+                                    )
+                                }
+                            }
+                        }
+                    // case summary or list of questions
+                    dbRef.document(consultId)
+                        .collection(CHILD_CASE_SUMMARY)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "No internet")
+                            } ?: run {
+                                val questionResult =
+                                    value?.documents ?: arrayListOf()
+                                for (questionDocument in questionResult) {
+                                    val questionData = questionDocument.data
+                                    questionData?.let {
+                                        caseSummary.add(it.toQuestionVO())
+                                    }
+                                }
+                            }
+                        }
+                    // prescription list
+                    dbRef.document(consultId)
+                        .collection(CHILD_PRESCRIPTION)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "No internet")
+                            } ?: run {
+                                val prescriptionResult =
+                                    value?.documents ?: arrayListOf()
+                                for (prescriptionDocument in prescriptionResult) {
+                                    val prescriptionData = prescriptionDocument.data
+                                    prescriptionData?.let {
+                                        prescription.add(it.toPrescriptionVO())
+                                    }
+                                }
+                            }
+                        }
+                    // messages
+                    dbRef.document(consultId)
+                        .collection(CHILD_MESSAGES)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "NO internet")
+                            } ?: run {
+                                val messageResult =
+                                    value?.documents ?: arrayListOf()
+                                for (messageDocument in messageResult) {
+                                    val messageData = messageDocument.data
+                                    messageData?.let {
+                                        messages.add(it.toMessageVO())
+                                    }
+                                }
+                                consult = ConsultVO(
+                                    consultId,
+                                    caseSummary,
+                                    prescription,
+                                    messages,
+                                    doctor,
+                                    patient
+                                )
+                                if (consult.doctor?.id == doctorId) {
+                                    consultations.add(consult)
+                                }
+                            }
+                            onSuccess(consultations)
+                        }
+                }
+            }
+        }
+    }
+
+    override fun getConsultRequests(
+        onSuccess: (List<ConsultRequestVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        val requestList: MutableList<ConsultRequestVO> = arrayListOf()
+        val ref = db.collection(ROOT_CONSULT_REQUEST)
+        ref.addSnapshotListener { value, error ->
+            error?.let {
+                onFailure(it.message ?: "No internet connection")
+            } ?: run {
+                val result = value?.documents ?: arrayListOf()
+                for (document in result) {
+                    // each request
+                    val requestId = document.id
+                    var caseSummary: MutableList<QuestionVO> = arrayListOf()
+                    val addressList: MutableList<AddressVO> = arrayListOf()
+                    val questionList: MutableList<QuestionVO> = arrayListOf()
+                    val doctorList: MutableList<DoctorVO> = arrayListOf()
+                    var patient: PatientVO = PatientVO()
+                    // case summary
+                    ref.document(requestId)
+                        .collection(CHILD_CASE_SUMMARY)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "No internet")
+                            } ?: run {
+                                val summaryResult = value?.documents ?: arrayListOf()
+                                for (summaryDocument in summaryResult) {
+                                    val summaryData = summaryDocument.data
+                                    summaryData?.let {
+                                        caseSummary.add(it.toQuestionVO())
+                                    }
+                                }
+                            }
+                        }
+                    // address for patient
+                    ref.document(requestId)
+                        .collection(CHILD_PATIENT)
+                        .document(CHILD_PATIENT)
+                        .collection(CHILD_ADDRESS)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "No internet")
+                            } ?: run {
+                                val addressResult =
+                                    value?.documents ?: arrayListOf()
+                                for (addressDocument in addressResult) {
+                                    val addressData = addressDocument.data
+                                    addressData?.let {
+                                        addressList.add(it.toAddressVO())
+                                    }
+                                }
+                            }
+                        }
+                    // general questions for patient
+                    ref.document(requestId)
+                        .collection(CHILD_PATIENT)
+                        .document(CHILD_PATIENT)
+                        .collection(CHILD_GENERAL_QUESTIONS)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "No internet")
+                            } ?: run {
+                                val questionResult =
+                                    value?.documents ?: arrayListOf()
+                                for (questionDocument in questionResult) {
+                                    val questionData = questionDocument.data
+                                    questionData?.let {
+                                        questionList.add(it.toQuestionVO())
+                                    }
+                                }
+                            }
+                        }
+                    // recent doctors for patient
+                    ref.document(requestId)
+                        .collection(CHILD_PATIENT)
+                        .document(CHILD_PATIENT)
+                        .collection(CHILD_RECENT_DOCTORS)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "No internet")
+                            } ?: run {
+                                val doctorResult = value?.documents ?: arrayListOf()
+                                for (doctorDocument in doctorResult) {
+                                    val doctorData = doctorDocument.data
+                                    doctorData?.let {
+                                        doctorList.add(it.toDoctorVO())
+                                    }
+                                }
+                            }
+                        }
+                    // patient
+                    ref.document(requestId)
+                        .collection(CHILD_PATIENT)
+                        .document(CHILD_PATIENT)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "No internet")
+                            } ?: run {
+                                val patientData = value?.data
+                                patientData?.let {
+                                    patient = it.toPatientVO(
+                                        doctorList, questionList, addressList
+                                    )
+                                }
+                            }
+                        }
+                    // request
+                    ref.document(requestId)
+                        .addSnapshotListener { value, error ->
+                            error?.let {
+                                onFailure(it.message ?: "no internet")
+                            } ?: run {
+                                val data = value?.data
+                                data?.let {
+                                    val request = it.toConsultRequestVO(caseSummary, patient)
+                                    requestList.add(request)
+                                }
+                                onSuccess(requestList)
+                            }
+                        }
+                }
+            }
+        }
+    }
+
+    override fun updateRequestStatus(
+        request: ConsultRequestVO,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        db.collection(ROOT_CONSULT_REQUEST)
+            .document(request.id)
+            .set(request.toConsultRequestMap())
+            .addOnSuccessListener {
+                Log.d("Success","updated status")
+            }
+            .addOnFailureListener {
+                Log.d("failed","cannot update status")
+            }
     }
 }

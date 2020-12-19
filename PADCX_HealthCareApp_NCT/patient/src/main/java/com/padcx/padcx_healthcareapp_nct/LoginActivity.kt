@@ -24,7 +24,6 @@ class LoginActivity : BaseActivity(),LoginView {
     private lateinit var mLoginPresenter : LoginPresenter
     private lateinit var callbackManager : CallbackManager
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -32,7 +31,7 @@ class LoginActivity : BaseActivity(),LoginView {
 
         setUpPresenter()
         setUpListeners()
-
+        mLoginPresenter.onUiReady()
     }
 
     private fun setUpPresenter() {
@@ -47,6 +46,7 @@ class LoginActivity : BaseActivity(),LoginView {
 
     override fun navigateToHome() {
         startActivity(MainActivity.newIntent(this))
+        finish()
     }
 
     override fun navigateToSignInWithFB() {

@@ -4,17 +4,21 @@ import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.padcx.padcx_healthcareapp_nct.mvp.views.HomeView
+import com.padcx.shared.data.models.AuthenticationModel
 import com.padcx.shared.data.models.HomeModel
+import com.padcx.shared.data.models.impls.AuthenticationModelImpl
 import com.padcx.shared.data.models.impls.HomeModelImpl
 import com.padcx.shared.mvp.presenters.AbstractBasePresenter
 
 class HomePresenterImpl: HomePresenter,AbstractBasePresenter<HomeView>() {
 
-    private val mHomeModel : HomeModel =
-        HomeModelImpl
+    private val mHomeModel : HomeModel = HomeModelImpl
+    private val mAuthenticationModel : AuthenticationModel = AuthenticationModelImpl
+    private var patientId = ""
 
-    override fun onUiReady(lifecycleOwner:LifecycleOwner,patientId:String) {
-        loadDataFromAPI()
+    override fun onUiReady(lifecycleOwner:LifecycleOwner) {
+        patientId = mAuthenticationModel.getUserId()
+        loadDataFromAPI(patientId)
         loadDataFromDb(lifecycleOwner,patientId)
     }
 
@@ -23,17 +27,19 @@ class HomePresenterImpl: HomePresenter,AbstractBasePresenter<HomeView>() {
             .observe(lifecycleOwner, Observer {
                 it?.let {
                     // show speciality list in ui
+                    mView.displaySpecialityList(it)
                 }
             })
         mHomeModel.getRecentDoctorsFromDb(patientId)
             .observe(lifecycleOwner, Observer {
                 it?.let {
                     // show recent doctor list in ui
+                    mView.displayRecentDoctorList(it)
                 }
             })
     }
 
-    private fun loadDataFromAPI() {
+    private fun loadDataFromAPI(patientId:String) {
         // get specialities
         mHomeModel.getSpecialities(
             onSuccess = {
@@ -44,7 +50,7 @@ class HomePresenterImpl: HomePresenter,AbstractBasePresenter<HomeView>() {
         )
         // get recent doctors
         mHomeModel.getRecentDoctors(
-            "Bob",
+            patientId,
             onSuccess = {
             },
             onFailure = {
@@ -62,6 +68,10 @@ class HomePresenterImpl: HomePresenter,AbstractBasePresenter<HomeView>() {
     }
 
     override fun onTapSpeciality(specialityName: String) {
-        // navigate to request consult screen
+        mView.displayRequestDialog(specialityName)
+    }
+
+    override fun onTapDoctor(doctorId: String) {
+
     }
 }

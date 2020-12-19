@@ -1,10 +1,7 @@
 package com.padcx.shared.persistence.daos
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.padcx.shared.data.vos.MedicineVO
 
 @Dao
@@ -14,4 +11,7 @@ interface MedicineDao {
 
     @Query("SELECT * FROM medicine")
     fun getMedicines():LiveData<List<MedicineVO>>
+
+    @Query("DELETE FROM medicine")
+    fun deleteMedicines()
 }

@@ -5,6 +5,7 @@ import com.padcx.shared.mvp.presenters.AbstractBasePresenter
 import com.padcx.shared.mvp.presenters.BasePresenter
 
 interface LoginPresenter:BasePresenter<LoginView> {
+    fun onUiReady()
     fun onTapLogin(phoneNumber:String,password:String)
     fun onTapSignInWithFb()
     fun onSuccessLoginWithFb(token:String)

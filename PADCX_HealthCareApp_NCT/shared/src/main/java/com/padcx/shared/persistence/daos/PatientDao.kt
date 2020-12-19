@@ -17,4 +17,5 @@ interface PatientDao {
 
     @Query("SELECT * FROM patients WHERE id=:patientId")
     fun getPatientById(patientId:String):LiveData<PatientVO>
+
 }
