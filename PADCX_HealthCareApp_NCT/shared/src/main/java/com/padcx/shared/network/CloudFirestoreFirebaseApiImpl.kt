@@ -2,6 +2,7 @@ package com.padcx.shared.network
 
 import android.util.Log
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.padcx.shared.data.vos.*
@@ -157,8 +158,8 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
             dbRef.collection(CHILD_PATIENT)
                 .document(CHILD_PATIENT)
                 .set(it.toPatientMap())
-                .addOnSuccessListener { Log.d("Success","patient document added")}
-                .addOnFailureListener { Log.d("Failed","cannot add patient document") }
+                .addOnSuccessListener { Log.d("Success", "patient document added") }
+                .addOnFailureListener { Log.d("Failed", "cannot add patient document") }
             val patientRef = dbRef.collection(CHILD_PATIENT)
                 .document(CHILD_PATIENT)
             for (question in it.generalQuestions ?: arrayListOf()) {
@@ -255,13 +256,17 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
     }
 
     override fun saveMessage(
+        consultId: String,
         message: MessageVO,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
-        consultRef.collection(CHILD_MESSAGES)
-            .document(message.id ?: "")
-            .set(message.toMessageMap())
+        val ref = db.collection(ROOT_CONSULTATION)
+            .document(consultId)
+            .collection(CHILD_MESSAGES)
+            .document()
+        message.id = ref.id
+        ref.set(message.toMessageMap())
             .addOnSuccessListener { Log.d("Success", "Sent message") }
             .addOnFailureListener { Log.d("Failure", "Failed to send message") }
     }
@@ -550,15 +555,15 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
                 error?.let {
                     onFailure(it.message ?: "Please check internet connection")
                 } ?: run {
-                    var doctor = DoctorVO()
-                    var patient = PatientVO()
-                    var messages: MutableList<MessageVO> = arrayListOf()
-                    var prescriptions: MutableList<PrescriptionVO> = arrayListOf()
-                    var recentDoctors: MutableList<DoctorVO> = arrayListOf()
-                    var generalQuestions: MutableList<QuestionVO> = arrayListOf()
-                    var addresses: MutableList<AddressVO> = arrayListOf()
                     val result = value?.documents ?: arrayListOf()
                     for (document in result) {
+                        var doctor = DoctorVO()
+                        var patient = PatientVO()
+                        var messages: MutableList<MessageVO> = arrayListOf()
+                        var prescriptions: MutableList<PrescriptionVO> = arrayListOf()
+                        var recentDoctors: MutableList<DoctorVO> = arrayListOf()
+                        var generalQuestions: MutableList<QuestionVO> = arrayListOf()
+                        var addresses: MutableList<AddressVO> = arrayListOf()
                         val data = document.data
                         consultId = document.id
                         val questionList: MutableList<QuestionVO> = arrayListOf()
@@ -728,11 +733,15 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
     }
 
     override fun getCurrentMessages(
+        consultId: String,
         onSuccess: (List<MessageVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
         val messages: MutableList<MessageVO> = arrayListOf()
-        consultRef.collection(CHILD_MESSAGES)
+        db.collection(ROOT_CONSULTATION)
+            .document(consultId)
+            .collection(CHILD_MESSAGES)
+            .orderBy("timestamp",Query.Direction.ASCENDING)
             .addSnapshotListener { value, error ->
                 error?.let {
                     onFailure(it.message ?: "Please check internet connection")
@@ -1217,10 +1226,10 @@ object CloudFirestoreFirebaseApiImpl : FirebaseApi {
             .document(request.id)
             .set(request.toConsultRequestMap())
             .addOnSuccessListener {
-                Log.d("Success","updated status")
+                Log.d("Success", "updated status")
             }
             .addOnFailureListener {
-                Log.d("failed","cannot update status")
+                Log.d("failed", "cannot update status")
             }
     }
 }

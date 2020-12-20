@@ -25,5 +25,7 @@
     <color name="colorTextGrayLight">#949494</color>
     <color name="colorLineGrayLight">#d4d4d4</color>
     <color name="colorYellow">#ffae27</color>
+    <color name="colorChatBackground">#d6e9ff</color>
+    <color name="colorGrayDark">#424656</color>
     <color name="colorCyan">#17a4c2</color>
 </resources>

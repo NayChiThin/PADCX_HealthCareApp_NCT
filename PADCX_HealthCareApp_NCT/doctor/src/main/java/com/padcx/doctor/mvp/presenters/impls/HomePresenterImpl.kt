@@ -65,6 +65,7 @@ class HomePresenterImpl: HomePresenter,AbstractBasePresenter<MainView>() {
     }
 
     override fun onTapSendMessage(consult: ConsultVO) {
+        mView.navigateToChat(consult)
     }
 
     override fun onTapAccept(consultRequest: ConsultRequestVO) {

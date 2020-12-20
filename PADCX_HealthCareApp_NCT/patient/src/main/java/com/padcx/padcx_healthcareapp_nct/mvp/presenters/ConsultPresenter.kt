@@ -9,5 +9,5 @@ import com.padcx.shared.mvp.views.BaseView
 interface ConsultPresenter:BasePresenter<ConsultView> {
     fun onUiReady(lifecycleOwner: LifecycleOwner)
     fun onTapCheckoutPrescription()
-    fun onTapSendMessage(message: MessageVO, onSuccess:()->Unit, onFailure: (String) -> Unit)
+//    fun onTapSendMessage(message: MessageVO, onSuccess:()->Unit, onFailure: (String) -> Unit)
 }

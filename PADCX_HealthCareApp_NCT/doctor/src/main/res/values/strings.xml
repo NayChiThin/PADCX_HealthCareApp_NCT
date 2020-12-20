@@ -62,6 +62,9 @@
     <string name="repeat">Repeat</string>
     <string name="myan_close">ပိတ်မည်</string>
     <string name="facebook_app_id">766338640633444</string>
+    <string name="myan_patient_detail">လူနာအချက်အလက်များ</string>
     <string name="fb_login_protocol_scheme">fb766338640633444</string>
+    <string name="myan_write">ရေးသားပါ</string>
+    <string name="more"><![CDATA[ထပ်ကြည့်မည် >>]]></string>
 
 </resources>

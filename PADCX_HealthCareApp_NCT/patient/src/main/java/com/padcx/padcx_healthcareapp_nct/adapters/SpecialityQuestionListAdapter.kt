@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.padcx.shared.adapters.BaseRecyclerAdapter
 import com.padcx.padcx_healthcareapp_nct.R
-import com.padcx.padcx_healthcareapp_nct.views.viewholders.BaseSpecialityQuestionListViewHolder
+import com.padcx.padcx_healthcareapp_nct.views.viewholders.baseviewholders.BaseSpecialityQuestionListViewHolder
 import com.padcx.padcx_healthcareapp_nct.views.viewholders.SpecialityQuestionListViewHolder
 import com.padcx.shared.data.vos.QuestionVO
 

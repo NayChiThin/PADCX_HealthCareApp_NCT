@@ -5,15 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProviders
 import com.facebook.*
-import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FacebookAuthProvider
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.padcx.padcx_healthcareapp_nct.mvp.presenters.LoginPresenter
-import com.padcx.padcx_healthcareapp_nct.mvp.presenters.LoginPresenterImpl
+import com.padcx.padcx_healthcareapp_nct.mvp.presenters.impls.LoginPresenterImpl
 import com.padcx.padcx_healthcareapp_nct.mvp.views.LoginView
 import com.padcx.shared.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_login.*

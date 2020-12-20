@@ -2,14 +2,12 @@ package com.padcx.padcx_healthcareapp_nct
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.padcx.padcx_healthcareapp_nct.mvp.presenters.RegisterPasswordPresenter
-import com.padcx.padcx_healthcareapp_nct.mvp.presenters.RegisterPasswordPresenterImpl
+import com.padcx.padcx_healthcareapp_nct.mvp.presenters.impls.RegisterPasswordPresenterImpl
 import com.padcx.padcx_healthcareapp_nct.mvp.views.RegisterPasswordView
 import com.padcx.shared.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_register_password.*

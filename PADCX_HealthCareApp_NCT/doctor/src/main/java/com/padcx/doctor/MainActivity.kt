@@ -65,6 +65,10 @@ class MainActivity : BaseActivity(),MainView {
         startActivity(PatientDetailActivity.newIntent(this,consultRequest))
     }
 
+    override fun navigateToChat(consult: ConsultVO) {
+        startActivity(ChatActivity.newIntent(this,consult))
+    }
+
     override fun displayDoctorProfile(name: String, photo: String) {
         tvName.text = name
         Glide.with(applicationContext)

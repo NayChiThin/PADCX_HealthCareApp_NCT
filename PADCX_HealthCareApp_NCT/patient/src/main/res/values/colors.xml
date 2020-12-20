@@ -16,5 +16,6 @@
     <color name="colorGray">#8b8a8a</color>
     <color name="colorGrayLight">#f3f3f3</color>
     <color name="colorGrayDark">#424656</color>
+    <color name="colorChatBackground">#d6e9ff</color>
     <color name="colorDialogText">#004247</color>
 </resources>

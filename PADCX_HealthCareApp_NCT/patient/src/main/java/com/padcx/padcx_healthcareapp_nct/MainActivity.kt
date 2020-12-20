@@ -2,24 +2,12 @@ package com.padcx.padcx_healthcareapp_nct
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.ViewModelProviders
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.messaging.FirebaseMessaging
-import com.padcx.padcx_healthcareapp_nct.mvp.presenters.RequestConsultPresenter
-import com.padcx.padcx_healthcareapp_nct.mvp.presenters.RequestConsultPresenterImpl
-import com.padcx.padcx_healthcareapp_nct.mvp.views.RequestConsultView
 import com.padcx.shared.activity.BaseActivity
-import com.padcx.shared.data.vos.QuestionVO
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(){

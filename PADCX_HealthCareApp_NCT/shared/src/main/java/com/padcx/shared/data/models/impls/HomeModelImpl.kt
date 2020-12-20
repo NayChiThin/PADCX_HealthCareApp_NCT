@@ -64,7 +64,7 @@ object HomeModelImpl : HomeModel, BaseModel() {
             onSuccess = {
                 mTheDB.consultDao().deleteConsultations()
                 mTheDB.consultDao().insertConsultations(it)
-//                onSuccess(it)
+                onSuccess(it)
             },
             onFailure = {
                 onFailure(it)

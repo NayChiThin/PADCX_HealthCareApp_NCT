@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import com.padcx.shared.adapters.BaseRecyclerAdapter
 import com.padcx.padcx_healthcareapp_nct.R
 import com.padcx.padcx_healthcareapp_nct.delegates.DoctorItemDelegate
-import com.padcx.padcx_healthcareapp_nct.views.viewholders.BaseRecentDoctorListViewHolder
+import com.padcx.padcx_healthcareapp_nct.views.viewholders.baseviewholders.BaseRecentDoctorListViewHolder
 import com.padcx.padcx_healthcareapp_nct.views.viewholders.RecentDoctorListViewHolder
 import com.padcx.shared.data.vos.DoctorVO
 

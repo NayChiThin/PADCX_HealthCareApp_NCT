@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PADCX_HealthCareApp_NCT">
-        <activity android:name=".FillCaseSummaryActivity"></activity>
+        <activity android:name=".ChatActivity"></activity>
+        <activity android:name=".FillCaseSummaryActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

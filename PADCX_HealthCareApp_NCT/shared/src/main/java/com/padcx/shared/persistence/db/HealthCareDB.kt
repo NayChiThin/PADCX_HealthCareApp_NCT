@@ -10,7 +10,7 @@ import com.padcx.shared.persistence.daos.*
 @Database(
     entities = [DoctorVO::class,SpecialityVO::class,QuestionVO::class,PatientVO::class,
     ConsultVO::class,ConsultRequestVO::class,CheckoutVO::class,MessageVO::class,MedicineVO::class],
-    version = 3,
+    version = 5,
     exportSchema = false
 )
 abstract class HealthCareDB :RoomDatabase(){

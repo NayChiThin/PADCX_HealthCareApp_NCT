@@ -2,7 +2,6 @@ package com.padcx.padcx_healthcareapp_nct
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -13,7 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.padcx.padcx_healthcareapp_nct.adapters.PatientDetailListAdapter
 import com.padcx.padcx_healthcareapp_nct.adapters.SpecialityQuestionListAdapter
 import com.padcx.padcx_healthcareapp_nct.mvp.presenters.FillCaseSummaryPresenter
-import com.padcx.padcx_healthcareapp_nct.mvp.presenters.FillCaseSummaryPresenterImpl
+import com.padcx.padcx_healthcareapp_nct.mvp.presenters.impls.FillCaseSummaryPresenterImpl
 import com.padcx.padcx_healthcareapp_nct.mvp.views.FillCaseSummaryView
 import com.padcx.padcx_healthcareapp_nct.views.components.CustomDialogCaseSummary
 import com.padcx.shared.activity.BaseActivity
@@ -21,10 +20,7 @@ import com.padcx.shared.data.vos.QuestionVO
 import com.padcx.shared.utils.EXTRA_SPECIALITY_NAME
 import com.padcx.shared.utils.MyViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_fill_case_summary.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.general_question_page.*
-import kotlinx.android.synthetic.main.patient_speciality_question_items.*
-import kotlinx.android.synthetic.main.speciality_question_items.*
 import kotlinx.android.synthetic.main.speciality_question_page.*
 
 class FillCaseSummaryActivity : BaseActivity(),FillCaseSummaryView {

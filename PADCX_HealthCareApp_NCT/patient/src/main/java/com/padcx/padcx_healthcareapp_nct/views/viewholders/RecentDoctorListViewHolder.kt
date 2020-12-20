@@ -3,6 +3,7 @@ package com.padcx.padcx_healthcareapp_nct.views.viewholders
 import android.view.View
 import com.bumptech.glide.Glide
 import com.padcx.padcx_healthcareapp_nct.delegates.DoctorItemDelegate
+import com.padcx.padcx_healthcareapp_nct.views.viewholders.baseviewholders.BaseRecentDoctorListViewHolder
 import com.padcx.shared.data.vos.DoctorVO
 import kotlinx.android.synthetic.main.recent_doctor_items.view.*
 

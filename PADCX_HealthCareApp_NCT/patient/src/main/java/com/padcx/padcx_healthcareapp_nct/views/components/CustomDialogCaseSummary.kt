@@ -4,14 +4,10 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.Window
-import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.padcx.padcx_healthcareapp_nct.R
 import com.padcx.padcx_healthcareapp_nct.adapters.CaseSummaryQuestionListAdapter
 import com.padcx.padcx_healthcareapp_nct.adapters.PatientDetailListAdapter
-import com.padcx.padcx_healthcareapp_nct.adapters.SpecialityQuestionListAdapter
-import com.padcx.padcx_healthcareapp_nct.mvp.presenters.FillCaseSummaryPresenter
-import com.padcx.padcx_healthcareapp_nct.mvp.presenters.FillCaseSummaryPresenterImpl
 import com.padcx.padcx_healthcareapp_nct.mvp.views.FillCaseSummaryView
 import com.padcx.shared.data.vos.QuestionVO
 import kotlinx.android.synthetic.main.confirm_case_summary_dialog.*

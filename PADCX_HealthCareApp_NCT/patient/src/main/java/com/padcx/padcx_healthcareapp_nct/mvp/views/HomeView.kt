@@ -11,6 +11,6 @@ interface HomeView:BaseView {
     fun displayRecentDoctorList(doctors:List<DoctorVO>)
     fun displayAcceptedConsult(consultList:List<ConsultVO>)
     fun displayRequestDialog(specialityName:String)
-    fun navigateToConsultation(consultId:String)
+    fun navigateToConsultation(consult:ConsultVO)
     fun navigateToAddCaseSummary(specialityName: String)
 }

@@ -8,15 +8,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.padcx.padcx_healthcareapp_nct.adapters.ConsultationListAdapter
 import com.padcx.padcx_healthcareapp_nct.adapters.RecentDoctorListAdapter
 import com.padcx.padcx_healthcareapp_nct.adapters.SpecialityListAdapter
 import com.padcx.padcx_healthcareapp_nct.mvp.presenters.HomePresenter
-import com.padcx.padcx_healthcareapp_nct.mvp.presenters.HomePresenterImpl
+import com.padcx.padcx_healthcareapp_nct.mvp.presenters.impls.HomePresenterImpl
 import com.padcx.padcx_healthcareapp_nct.mvp.views.HomeView
 import com.padcx.padcx_healthcareapp_nct.views.components.CustomDialogConfirmRequest
-import com.padcx.shared.data.vos.ConsultRequestVO
 import com.padcx.shared.data.vos.ConsultVO
 import com.padcx.shared.data.vos.DoctorVO
 import com.padcx.shared.data.vos.SpecialityVO
@@ -49,7 +47,6 @@ class HomeFragment : Fragment(),HomeView {
         mHomePresenter.initPresenter(this)
     }
     private fun setUpRecyclerView() {
-
         mConsultListAdapter = ConsultationListAdapter(mHomePresenter)
         val consultLayoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
         rvConsultation.adapter = mConsultListAdapter
@@ -96,7 +93,8 @@ class HomeFragment : Fragment(),HomeView {
         dialog.show()
     }
 
-    override fun navigateToConsultation(consultId: String) {
+    override fun navigateToConsultation(consult: ConsultVO) {
+        startActivity(ChatActivity.newIntent(this.requireContext(),consult))
     }
 
     override fun navigateToAddCaseSummary(specialityName: String) {

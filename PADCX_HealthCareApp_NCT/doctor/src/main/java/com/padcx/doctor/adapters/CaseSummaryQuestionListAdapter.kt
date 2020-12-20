@@ -10,7 +10,7 @@ import com.padcx.shared.data.vos.QuestionVO
 
 class CaseSummaryQuestionListAdapter: BaseRecyclerAdapter<BaseCaseSummaryViewHolder, QuestionVO>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseCaseSummaryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.speciality_question_items,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.patient_speciality_question_items,parent,false)
         return CaseSummaryViewHolder(view)
     }
 

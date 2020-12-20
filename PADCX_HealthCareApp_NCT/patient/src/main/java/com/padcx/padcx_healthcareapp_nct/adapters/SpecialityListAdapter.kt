@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import com.padcx.shared.adapters.BaseRecyclerAdapter
 import com.padcx.padcx_healthcareapp_nct.R
 import com.padcx.padcx_healthcareapp_nct.delegates.SpecialityItemDelegate
-import com.padcx.padcx_healthcareapp_nct.views.viewholders.BaseSpecialityListViewHolder
+import com.padcx.padcx_healthcareapp_nct.views.viewholders.baseviewholders.BaseSpecialityListViewHolder
 import com.padcx.padcx_healthcareapp_nct.views.viewholders.SpecialityListViewHolder
 import com.padcx.shared.data.vos.SpecialityVO
 

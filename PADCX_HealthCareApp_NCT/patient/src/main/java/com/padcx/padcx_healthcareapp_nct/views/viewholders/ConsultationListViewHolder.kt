@@ -3,14 +3,15 @@ package com.padcx.padcx_healthcareapp_nct.views.viewholders
 import android.view.View
 import com.bumptech.glide.Glide
 import com.padcx.padcx_healthcareapp_nct.delegates.ConsultationItemDelegate
+import com.padcx.padcx_healthcareapp_nct.views.viewholders.baseviewholders.BaseConsultationListViewHolder
 import com.padcx.shared.data.vos.ConsultVO
-import com.padcx.shared.data.vos.DoctorVO
 import kotlinx.android.synthetic.main.consultation_item.view.*
 
-class ConsultationListViewHolder(itemView:View,delegate: ConsultationItemDelegate):BaseConsultationListViewHolder(itemView) {
+class ConsultationListViewHolder(itemView:View,delegate: ConsultationItemDelegate):
+    BaseConsultationListViewHolder(itemView) {
     init {
         itemView.tvStartConsult.setOnClickListener {
-            delegate.onTapStartConsult()
+            delegate.onTapStartConsult(mData?:ConsultVO())
         }
     }
     override fun bindData(data: ConsultVO) {

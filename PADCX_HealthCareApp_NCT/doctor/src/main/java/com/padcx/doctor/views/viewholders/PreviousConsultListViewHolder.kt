@@ -23,6 +23,9 @@ class PreviousConsultListViewHolder(itemView:View,private val mDelegate:Consulta
         itemView.tvNote.setOnClickListener {
             mDelegate.onTapConsultNote(data)
         }
+        itemView.btnSendMessage.setOnClickListener {
+            mDelegate.onTapSendMessage(data)
+        }
         mData = data
     }
 }

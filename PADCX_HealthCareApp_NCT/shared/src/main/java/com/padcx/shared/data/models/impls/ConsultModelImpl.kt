@@ -42,16 +42,17 @@ object ConsultModelImpl : ConsultModel,BaseModel() {
             })
     }
 
-    override fun saveMessage(
+   /* override fun saveMessage(
         message: MessageVO,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
         mFirebaseApi.saveMessage(message, onSuccess, onFailure)
-    }
+    }*/
 
-    override fun getMessages(onSuccess: (List<MessageVO>) -> Unit, onFailure: (String) -> Unit) {
+    override fun getMessages(consultId:String,onSuccess: (List<MessageVO>) -> Unit, onFailure: (String) -> Unit) {
         mFirebaseApi.getCurrentMessages(
+            consultId,
             onSuccess = {
                 mTheDB.messageDao().deleteMessages()
                 mTheDB.messageDao().insertMessages(it)

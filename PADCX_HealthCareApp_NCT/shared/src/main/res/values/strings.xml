@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">doctor</string>
+    <string name="the_caremm">The CareMM</string>
+    <string name="doctor_app">DOCTOR APP</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="sign_in_fb">Sign in with Facebook</string>
+    <string name="sign_in_with_apple">Sign in with Apple</string>
+    <string name="name">Name</string>
+    <string name="enter_otp_code">Enter OTP Code</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="next">Next</string>
+    <string name="have_acc">Already have an account? </string>
+    <string name="set_password">Set Password</string>
+    <string name="retype_password">Retype Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="fill_form">အချက်အလက်များဖြည့်ပါ</string>
+    <string name="myan_name">အမည်</string>
+    <string name="myan_dob">မွေးနေ့</string>
+    <string name="myan_phone">ဖုန်းနံပါတ်</string>
+    <string name="myan_gender">အမျိုးသား/အမျိုးသမီး</string>
+    <string name="myan_male">အမျိုးသား</string>
+    <string name="myan_female">အမျိုးသမီး</string>
+    <string name="myan_speciality">အထူးကု</string>
+    <string name="myan_exp">လုပ်သက်</string>
+    <string name="myan_exp_unit">နှစ်</string>
+    <string name="myan_certificate">ရရှိထားသော ဘွဲ့များ</string>
+    <string name="myan_description">ကိုယ်ရေးအကျဉ်းချုပ်</string>
+    <string name="myan_address">လိပ်စာအပြည့်အစုံ</string>
+    <string name="create_account">Create Account</string>
+
+    <string-array name="specialities">
+        <item>နှလုံးအထူးကု</item>
+        <item>Children Specialist</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="myan_consult_request">ရက်ချိန်းယူခြင်းတောင်းဆိုမှု</string>
+    <string name="myan_new_patient">လူနာအသစ်</string>
+    <string name="myan_skip">ကျော်မည်</string>
+    <string name="myan_accept">လက်ခံမည်</string>
+    <string name="myan_previous_consult">ရက်ချိန်းယူထားခဲ့မှု မှတ်တမ်းများ</string>
+    <string name="myan_send_message">စာပို့မည်</string>
+    <string name="myan_consult_note">ဆေးမှတ်တမ်း</string>
+    <string name="myan_prescription">ဆေးညွှန်း</string>
+    <string name="myan_note">မှတ်ချက်</string>
+    <string name="myan_consulted_patient">ဆွေးနွေးခဲံ့ဖူးသောလူနာ</string>
+    <string name="myan_later">နောက်မှ</string>
+    <string name="myan_choose_time">အချိန်‌ရွေးမည်</string>
+    <string name="myan_patient_info">လူနာအချက်အလက်</string>
+    <string name="myan_patient_infos">လူနာအချက်အလက်များ</string>
+    <string name="colon">:</string>
+    <string name="myan_speciality_question">ရောဂါဆိုင်ရာမေးခွန်းများ</string>
+    <string name="myan_start_consult">ဆွေးနွေးမှု စတင်မည်</string>
+    <string name="myan_consulted_date">ဆွေးနွေးခဲ့သည့် နေ့စွဲ</string>
+    <string name="myan_patient_name">လူနာအမည်</string>
+    <string name="myan_amount">ပမာဏ</string>
+    <string name="myan_count">အရေအတွက်</string>
+    <string name="myan_time_taken">ကြာချိန်</string>
+    <string name="myan_times">အကြိမ်အရေအတွက်</string>
+    <string name="repeat">Repeat</string>
+    <string name="myan_close">ပိတ်မည်</string>
+    <string name="facebook_app_id">766338640633444</string>
+    <string name="fb_login_protocol_scheme">fb766338640633444</string>
+
+</resources>

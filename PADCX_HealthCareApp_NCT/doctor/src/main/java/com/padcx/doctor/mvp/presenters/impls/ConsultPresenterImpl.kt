@@ -11,6 +11,7 @@ import com.padcx.shared.data.vos.MedicineVO
 import com.padcx.shared.data.vos.MessageVO
 import com.padcx.shared.data.vos.QuestionVO
 import com.padcx.shared.mvp.presenters.AbstractBasePresenter
+/*
 
 class ConsultPresenterImpl: ConsultPresenter,AbstractBasePresenter<ConsultView>() {
 
@@ -62,4 +63,4 @@ class ConsultPresenterImpl: ConsultPresenter,AbstractBasePresenter<ConsultView>(
             mView.showError(it)
         })
     }
-}
+}*/

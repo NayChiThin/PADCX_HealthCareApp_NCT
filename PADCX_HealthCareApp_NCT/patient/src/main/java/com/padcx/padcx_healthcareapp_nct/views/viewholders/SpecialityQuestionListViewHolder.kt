@@ -3,11 +3,13 @@ package com.padcx.padcx_healthcareapp_nct.views.viewholders
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import com.padcx.padcx_healthcareapp_nct.views.viewholders.baseviewholders.BaseSpecialityQuestionListViewHolder
 import com.padcx.shared.data.vos.QuestionVO
 import kotlinx.android.synthetic.main.speciality_question_items.view.*
 
 
-class SpecialityQuestionListViewHolder(itemView:View,var answerList:MutableList<String>):BaseSpecialityQuestionListViewHolder(itemView) {
+class SpecialityQuestionListViewHolder(itemView:View,var answerList:MutableList<String>):
+    BaseSpecialityQuestionListViewHolder(itemView) {
     init {
         itemView.etAnswer.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(

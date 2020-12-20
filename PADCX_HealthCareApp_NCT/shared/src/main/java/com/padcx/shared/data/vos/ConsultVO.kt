@@ -7,6 +7,7 @@ import androidx.room.TypeConverters
 import com.padcx.shared.persistence.typeconverters.MessageVOListTypeConverter
 import com.padcx.shared.persistence.typeconverters.PrescriptionVOListTypeConverter
 import com.padcx.shared.persistence.typeconverters.QuestionVOListTypeConverter
+import java.io.Serializable
 
 @Entity(tableName = "consultation")
 @TypeConverters(QuestionVOListTypeConverter::class,MessageVOListTypeConverter::class,PrescriptionVOListTypeConverter::class)
@@ -20,7 +21,7 @@ data class ConsultVO (
     var doctor : DoctorVO? = null,
     @Embedded(prefix = "patient_")
     var patient : PatientVO? = null
-)
+):Serializable
 fun ConsultVO.toConsultMap():HashMap<String,String> {
     val consultMap = hashMapOf(
         "id" to id

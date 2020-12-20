@@ -34,7 +34,7 @@ class PatientDetailPresenterImpl:
             })
         mPatientDetailModel.createConsultation(consult,
             onSuccess = {
-                mView.navigateToChat()
+                mView.navigateToChat(consult)
             },
             onFailure = {error->
                 mView.showError(error)

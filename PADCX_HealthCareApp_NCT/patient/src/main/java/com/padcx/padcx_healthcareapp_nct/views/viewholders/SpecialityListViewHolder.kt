@@ -3,12 +3,12 @@ package com.padcx.padcx_healthcareapp_nct.views.viewholders
 import android.view.View
 import com.bumptech.glide.Glide
 import com.padcx.padcx_healthcareapp_nct.delegates.SpecialityItemDelegate
+import com.padcx.padcx_healthcareapp_nct.views.viewholders.baseviewholders.BaseSpecialityListViewHolder
 import com.padcx.shared.data.vos.SpecialityVO
-import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.android.synthetic.main.fragment_home.view.tvSpeciality
 import kotlinx.android.synthetic.main.speciality_items.view.*
 
-class SpecialityListViewHolder(itemView:View,delegate:SpecialityItemDelegate):BaseSpecialityListViewHolder(itemView) {
+class SpecialityListViewHolder(itemView:View,delegate:SpecialityItemDelegate):
+    BaseSpecialityListViewHolder(itemView) {
     init {
         itemView.setOnClickListener{
             delegate.onTapSpeciality(itemView.tvSpecialityName.text.toString())

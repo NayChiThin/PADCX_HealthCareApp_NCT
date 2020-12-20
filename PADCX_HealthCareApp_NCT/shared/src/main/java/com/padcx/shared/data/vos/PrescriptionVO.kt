@@ -1,6 +1,7 @@
 package com.padcx.shared.data.vos
 
 import androidx.room.Embedded
+import java.io.Serializable
 
 data class PrescriptionVO (
     var id:String? = null,
@@ -9,8 +10,8 @@ data class PrescriptionVO (
     var medicine:MedicineVO? = null,
     @Embedded
     var routine:RoutineVO? = null
-)
-fun PrescriptionVO.toPrescriptionMap():HashMap<String,Any?> {
+):Serializable
+fun PrescriptionVO.toPrescriptionMap(): HashMap<String, Serializable?> {
     val prescriptionMap = hashMapOf(
         "id" to id,
         "count" to count,

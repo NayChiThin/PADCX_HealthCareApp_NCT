@@ -15,6 +15,7 @@ import com.padcx.doctor.mvp.presenters.impls.PatientDetailPresenterImpl
 import com.padcx.doctor.mvp.views.PatientDetailView
 import com.padcx.shared.activity.BaseActivity
 import com.padcx.shared.data.vos.ConsultRequestVO
+import com.padcx.shared.data.vos.ConsultVO
 import com.padcx.shared.data.vos.QuestionVO
 import com.padcx.shared.utils.EXTRA_CONSULT_REQUEST
 import kotlinx.android.synthetic.main.activity_patient_detail.*
@@ -87,7 +88,8 @@ class PatientDetailActivity : BaseActivity(),PatientDetailView {
         mSpecialityQuestionListAdapter.setNewData(specialityQuestions)
     }
 
-    override fun navigateToChat() {
+    override fun navigateToChat(consult: ConsultVO) {
+        startActivity(ChatActivity.newIntent(this,consult))
         finish()
     }
 

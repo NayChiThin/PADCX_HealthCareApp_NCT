@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 tools:itemCount="1"
-                tools:listitem="@layout/patient_speciality_question_items"
+                tools:listitem="@layout/questions_items"
                 android:layout_below="@id/tvSpecialityTitle"
                 android:layout_marginStart="19dp"
                 android:layout_marginEnd="10dp"
