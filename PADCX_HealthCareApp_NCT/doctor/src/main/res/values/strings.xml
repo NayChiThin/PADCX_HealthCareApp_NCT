@@ -33,9 +33,12 @@
 
     <string-array name="specialities">
         <item>နှလုံးအထူးကု</item>
-        <item>Children Specialist</item>
+        <item>ဦးနှောက် နှင့်အာရုံကြောဆိုင်ရာ</item>
+        <item>နှလုံးအထူးကု</item>
+        <item>အရေပြားဆိုင်ရာအထူးကု</item>
+        <item>သွားဖက်ဆိုင်ရာ</item>
+        <item>သားဖွားမီးယပ်အထူးကု</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="myan_consult_request">ရက်ချိန်းယူခြင်းတောင်းဆိုမှု</string>
     <string name="myan_new_patient">လူနာအသစ်</string>

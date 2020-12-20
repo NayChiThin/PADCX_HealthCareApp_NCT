@@ -67,11 +67,16 @@ class PatientDetailsActivity : BaseActivity(),PatientDetailsView {
     }
 
     override fun displayDetails() {
+        /*Glide.with(this)
+            .load(consult.patient?.profilephoto)
+            .into(ivPatient)*/
         val generalQuestions : MutableList<QuestionVO> = arrayListOf()
         val specialityQuestions : MutableList<QuestionVO> = arrayListOf()
         val question = QuestionVO()
         question.name = "လူနာအမည်"
         question.answer = consult.patient?.name
+        generalQuestions.add(question)
+
         for(question in consult.caseSummary?: arrayListOf()) {
             if(question.type == "General") {
                 generalQuestions.add(question)

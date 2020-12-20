@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity(){
 
     val homeFragment : Fragment = HomeFragment()
+    val messageFragment : Fragment = MessageFragment()
     val fm : FragmentManager = supportFragmentManager
     var active : Fragment = homeFragment
 
@@ -39,12 +40,11 @@ class MainActivity : BaseActivity(){
                             .commit()*/
                         return true
                     }
-                    /*
-                    R.id.action_search -> {
-                        fm.beginTransaction().hide(active).show(searchFragment).commit()
-                        active = searchFragment
+                    R.id.action_message -> {
+                        fm.beginTransaction().hide(active).show(messageFragment).commit()
+                        active = messageFragment
                         return true
-                    }*/
+                    }
                 }
                 return false
             }
@@ -57,8 +57,8 @@ class MainActivity : BaseActivity(){
     }
     private fun arrangeFragments() {
         /*fm.beginTransaction().add(R.id.flBottomNavigationContainer,searchFragment,"Search Fragment").hide(searchFragment).commit()
-        fm.beginTransaction().add(R.id.flBottomNavigationContainer,downloadFragment,"Download Fragment").hide(downloadFragment).commit()
-        fm.beginTransaction().add(R.id.flBottomNavigationContainer,blankFragment,"Blank Fragment").hide(blankFragment).commit()*/
+        fm.beginTransaction().add(R.id.flBottomNavigationContainer,downloadFragment,"Download Fragment").hide(downloadFragment).commit()*/
+        fm.beginTransaction().add(R.id.flBottomNavigationContainer,messageFragment,"Message Fragment").hide(messageFragment).commit()
         fm.beginTransaction().add(R.id.flBottomNavigationContainer,homeFragment).commit()
     }
     private fun setUpPresenter() {

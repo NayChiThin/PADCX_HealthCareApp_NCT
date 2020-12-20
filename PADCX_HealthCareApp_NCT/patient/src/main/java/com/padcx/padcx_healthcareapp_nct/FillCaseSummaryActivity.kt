@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -128,13 +129,9 @@ class FillCaseSummaryActivity : BaseActivity(),FillCaseSummaryView {
                             generalQuestions[generalQuestions.indexOf(question)].answer = etDay.text.toString()+" "+etMonth.text.toString()+" "+etYear.text.toString()
                         }
                         "bloodtype" -> {
-                            generalQuestions[generalQuestions.indexOf(question)].answer = when(rdBloodType.checkedRadioButtonId) {
-                                0 -> "A"
-                                1 -> "B"
-                                2 -> "AB"
-                                3 -> "O"
-                                else -> ""
-                            }
+                            val checkedId = rdBloodType.checkedRadioButtonId
+                            val radioButton = findViewById<RadioButton>(checkedId)
+                            generalQuestions[generalQuestions.indexOf(question)].answer = radioButton.text.toString()
                         }
                         "height" -> {
                             generalQuestions[generalQuestions.indexOf(question)].answer = etHeight.text.toString()+ " ft"
